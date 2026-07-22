@@ -1,0 +1,9 @@
+-implement the preprocessor
+-stub out the compiler
+-implement the assembler/linker
+-implement a very basic error catching system
+-implement the following flags
+* --lex : directs it to run the lexer, but stops before parsing, no output file ; INCOMPLETE
+* --parse : directs it to run the lexer and the parser but stop before assembly generation, no output file ; INCOMPLETE
+* --codegen : directs it to preform lexing, parsing, and assembly generation but stop before code emmision, no output file ; INCOMPLETE
+* -S : directs the compiler to emit an assembly file, but to not assemble or link it ; INCOMPLETE
