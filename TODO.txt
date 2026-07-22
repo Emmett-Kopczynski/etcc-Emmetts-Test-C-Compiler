@@ -1,0 +1,4 @@
+
+Big Picture ::
+- write a working version of the compiler driver
+- figure out everything that the preprosessor is supposed to do, and make the preprosessor todo list
