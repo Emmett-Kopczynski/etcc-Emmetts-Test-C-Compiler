@@ -1,3 +1,0 @@
-/* flagtable.c :: TODO document
- *
- */
