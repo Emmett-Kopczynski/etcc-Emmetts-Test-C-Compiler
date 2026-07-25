@@ -20,18 +20,13 @@
 
 /* homemade inclusions */
 #include "../util/boolean.h"
+#include "driver_utils.h"
 
-/* definitions */
-#define FLAGSNUM 0 /* The Amount of Possible Flags for the compiler driver */
-
+/* Symbolic constants */
 
 int main(int argc, char *argv[]){
     
-    if(True){
-        printf("True Works!\n");
-    } else{
-        printf("Truth Fails\n");
-    }
+
 
     return 0;   
 }
