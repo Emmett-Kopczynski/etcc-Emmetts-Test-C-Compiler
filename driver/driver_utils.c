@@ -12,7 +12,9 @@
 #include "driver_utils.h"
 
 
-int parse_flags(char *cmd, FlagLookupTable flags);
+int parse_flags(char *cmd, FlagLookupTable flags){
+	return -1;
+} /* TODO implement */
 
 
 
