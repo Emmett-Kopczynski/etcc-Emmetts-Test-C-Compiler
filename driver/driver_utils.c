@@ -77,13 +77,7 @@ int preprocess(char *input_file, FlagLookupTable flags){ /* TODO figure out the 
     strcat(fcmd, mcmd); /* writes the middle -o  into fcmd */
     strcat(fcmd, input_file);
     
-    fcmd[strlen(fcmd) - 1] = 'i'; /* should make the filename of the output .i instead of .c */ /* TODO mabye 
-                                                                                                make it so that
-                                                                                               the input file has
-                                                                                              no file ext at 
-                                                                                             the end of it, so we
-                                                                                            add theose ourselves */
-
+    fcmd[strlen(fcmd) - 1] = 'i'; /* should make the filename of the output .i instead of .c */ 
 
     /* should call gcc -E -P INPUT_FILE.c -o PREPROCESSED_FILE.i */
     ret = system(fcmd); /* gives ret the exit number of the system call */ 

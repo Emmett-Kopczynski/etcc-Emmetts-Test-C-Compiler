@@ -15,7 +15,7 @@
 #include "../util/boolean.h"
 
 /* symbolic constants */
-#define FLAGNUM 5 /* the amount of command line flags */
+#define FLAGNUM 6 /* the amount of command line flags */
 
 
 /* Flags : symbolic representations of the flags one might input when using command line arguments
@@ -28,7 +28,8 @@ typedef enum {
     S , /* -s */
     LEX, /* --lex */
     PARSE, /* --parse */
-    CODEGEN /* --codegen */
+    CODEGEN, /* --codegen */
+    P /* -P */
 } Flags;
 
 

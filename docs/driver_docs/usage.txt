@@ -1,0 +1,15 @@
+etcc ~ emmetts test c compiler :: not recommended for usage in large projects
+
+Usage ::
+    etcc [flags] INPUT_FILE
+
+Flags : 
+    -P : runs only the preprocessor
+
+    -S : emits an assembly file, but does not link or assemble it
+
+    --lex : Direts the compiler to run the lexer, but stop before parsing
+    
+    --parse : Directs the compiler to run the lexer and the parser, but stop before assembly generation
+    
+    --codegen : Directs the compiler run the lexer, the parser, and assembly generation, but stop before code emission

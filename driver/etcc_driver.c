@@ -40,18 +40,29 @@ int main(int argc, char *argv[]){
     }
 
     /* declare and construct the flag lookup table */
-    FlagLookupTable flags;
-    FlagLookupTable_construct_new(&flags);
+    FlagLookupTable flagtable;
+    FlagLookupTable_construct_new(&flagtable);
 
     /* put the used flags in the flag lookup table */
-    if( parse_flags(cmd, &flags) != 0)
+    if( parse_flags(cmd, &flagtable) != 0)
         return 1;
 
     /* find the source file */
     char source[strlen(cmd)];
     /* TODO make a find source function */
+
+    /* call the compiler */
+    // TODO implement the compiler */
     
+    /* TODO delete the .i file */
+        
+
+    if(flagtable.contains(&flagtable, S) == False){
+        /* link and assemble */
+        // TODO implement the gcc assembler/linker
     
+        /* TODO delete the assembly file */
+    }
 
     return 0;   
 }
