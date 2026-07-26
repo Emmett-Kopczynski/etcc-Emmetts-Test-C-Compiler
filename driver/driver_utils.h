@@ -23,7 +23,7 @@
  * NOTE : function takes a boolean array of size FLAGSNUM, with different numbers associated with different flags
  *
  */
-int parse_flags(char *cmd, FlagLookupTable flags); 
+int parse_flags(char *cmd, FlagLookupTable *flags); 
 
 
 /* preprocess :: runs the gcc preprocessor on our input file (the .c file)

@@ -3,9 +3,11 @@
 /* flag_table.h :: The header file for the FlagLookupTable data structure, the Flags enum, and the associated
  * utility functions
  *
- * To Do : NOTHING 
+ * To Do : 
  *
  *      To Document :
+ *          - FlagLookupTable_construct_new
+ *          - detect_flag
  *
  */
 
@@ -13,7 +15,7 @@
 #include "../util/boolean.h"
 
 /* symbolic constants */
-#define FLAGNUM 4 /* the amount of command line flags */
+#define FLAGNUM 5 /* the amount of command line flags */
 
 
 /* Flags : symbolic representations of the flags one might input when using command line arguments
@@ -22,7 +24,8 @@
  * NOTE :: See the docs for information on what each flag does
  */
 typedef enum {
-    S = 0, /* -s */
+    ERR = 0, /* Error code, Not A Flag */
+    S , /* -s */
     LEX, /* --lex */
     PARSE, /* --parse */
     CODEGEN /* --codegen */
@@ -56,7 +59,7 @@ typedef struct flaglookuptable {
  */
 void FlagLookupTable_construct_new(FlagLookupTable *flagtable);
 
-/* FlagLookupTable_contains :  TODO document
+/* FlagLookupTable_contains : 
  *
  * Arguments : 
  *      - flagtable : type FlagLookupTable * : the flagtable we are searching in
@@ -78,6 +81,9 @@ boolean FlagLookupTable_contains(FlagLookupTable *flagtable, Flags flag);
  */
 boolean FlagLookupTable_put(FlagLookupTable *flagtable, Flags flag);
 
-
+/* TODO document 
+ *
+ */
+Flags detect_flag(char *flag);
 
 #endif

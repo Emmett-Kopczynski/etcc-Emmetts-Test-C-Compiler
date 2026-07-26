@@ -5,18 +5,20 @@
  * 
  * 
  * To Do :
- * - Implement a system to find what flags are being used, make the system highly scaleable, likely done in a different source file
  * - Implement the gcc preprocessor
  * - Implement the running of the etcc compiler
  * - implement the gcc assembler and linker
  * - implement a basic error messaging system for the compiler
  * 
- *
+ *  
  */
+
+/* symbolic constants */
+
 
 /* inclusions from c standard */
 #include <stdio.h>
-
+#include <string.h>
 
 /* homemade inclusions */
 #include "../util/boolean.h"
@@ -26,13 +28,29 @@
 /* Symbolic constants */
 
 int main(int argc, char *argv[]){
+    
+    /* builds the cmd */
+    char cmd[10000];
+    int i;
+    i = 0;
+    for(i = 0; i < argc; i ++){
+        strcat(cmd, argv[i]);
+        strcat(cmd, " ");
+        
+    }
+
     /* declare and construct the flag lookup table */
     FlagLookupTable flags;
     FlagLookupTable_construct_new(&flags);
 
     /* put the used flags in the flag lookup table */
-    /* TODO */
+    if( parse_flags(cmd, &flags) != 0)
+        return 1;
 
+    /* find the source file */
+    char source[strlen(cmd)];
+    /* TODO make a find source function */
+    
     
 
     return 0;   

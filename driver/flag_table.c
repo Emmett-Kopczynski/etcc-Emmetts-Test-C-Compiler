@@ -3,6 +3,7 @@
  * 
  * To Do :
  *      To Implement :
+ *          - detect_flag
  *
  *      To Test :
  *
@@ -11,6 +12,9 @@
  * Known Bugs :
  *
  */
+
+/* c standard inclusions */
+#include <string.h>
 
 /* homemeade indclusions */
 #include "flag_table.h"
@@ -53,6 +57,19 @@ boolean FlagLookupTable_put(FlagLookupTable *flagtable, Flags flag){
 
 
 
+Flags detect_flag(char *flag){
+    if(strcmp(flag, "-S") == 0){
+        return S;
+    } else if (strcmp(flag, "--lex") == 0){
+        return LEX;
+    } else if(strcmp(flag, "--parse") == 0){
+        return PARSE;
+    } else if(strcmp(flag, "--codegen") == 0){
+        return CODEGEN;
+    }else{
+        return ERR;
+    }
+}
 
 
 

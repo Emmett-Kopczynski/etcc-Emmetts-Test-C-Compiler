@@ -26,8 +26,34 @@
 #include "flag_table.h"
 
 
-int parse_flags(char *cmd, FlagLookupTable flags){
-	return -1;
+int parse_flags(char *cmd, FlagLookupTable *flags){
+	int i;
+    i = 0;
+    
+    char buffer[strlen(cmd)]; /* buffer to store flags */
+    boolean onflag = False;
+
+    for(i = 0; i < strlen(cmd); i++){
+        if(cmd[i] == '-' && onflag == False)
+            onflag = True;
+        else if (cmd[i] == ' ' && onflag == True){
+            flags->put(flags, detect_flag(buffer));
+            if(flags->contains(flags, ERR) ){
+                fprintf(stderr, "unrecondized flag :: %s\n", buffer);
+                return 1;
+            }
+            memset(buffer, 0, strlen(buffer));
+            onflag = False;
+        }
+
+        if(onflag){
+            buffer[strlen(buffer)] = cmd[i];
+        }
+    }
+    
+
+
+    return 0;
 } /* TODO implement */
 
 
