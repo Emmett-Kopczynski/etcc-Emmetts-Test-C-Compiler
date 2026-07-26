@@ -21,13 +21,16 @@
 /* homemade inclusions */
 #include "../util/boolean.h"
 #include "driver_utils.h"
+#include "flag_table.h"
 
 /* Symbolic constants */
 
 int main(int argc, char *argv[]){
+    /* Start the flag lookup table */
+    FlagLookupTable flags;
+    int ret = 0;
     
 
-
-    return 0;   
+    return ret;   
 }
 

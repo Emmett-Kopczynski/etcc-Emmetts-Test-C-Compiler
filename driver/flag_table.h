@@ -1,34 +1,69 @@
-#ifndef FLAGTABLE_H_
-#define FLAGTABLE_H_
-/* flag_table.h :: TODO document
+#ifndef FLAG_TABLE_H_
+#define FLAG_TABLE_H_
+/* flag_table.h :: The header file for the FlagLookupTable data structure, the Flags enum, and the associated
+ * utility functions
  *
+ * To Do : 
+ *
+ *      To Document :
+ *          - FlagLookupTable
+ *          - contains
+ *          - puts
+ *          - FlagLookupTable_construct_new
+ *          - FlagLookupTable_contains
+ *          - FlagLookupTable_put
  */
 
+/* homemade inclusions */
+#include "../util/boolean.h"
 
-/* TODO document */
+/* symbolic constants */
+#define FLAGNUM 4 /* the amount of command line flags */
+
+
+/* Flags : symbolic representations of the flags one might input when using command line arguments
+ * The amount of elements in this enum should ALWAYS be equal to the FLAGNUM symbolic constant
+ *
+ * NOTE :: See the docs for information on what each flag does
+ */
 typedef enum {
-
+    S = 0, /* -s */
+    LEX, /* --lex */
+    PARSE, /* --parse */
+    CODEGEN /* --codegen */
 } Flags;
 
+
+/* FlagLookupTable :  TODO document
+ *
+ */
+typedef struct flaglookuptable {
+    
+    boolean flaglist[FLAGNUM]; 
+
+    /* TODO document */
+    boolean (*contains)(struct flaglookuptable *, Flags);
+
+    /* TODO document */
+    boolean (*put)(struct flaglookuptable *, Flags);
+    
+} FlagLookupTable;
 
 /* TODO document
  *
  */
-typedef struct flaglookuptable{
-/* TODO implement */
-    /* NOTES
-     *
-     * - the flags are just enums, the number of the enum is the index in the table,
-     *   the table stores true or false values at those indexes to indicate whather a flag
-     *   is "in the table" / "active" (with a true at that index) or not (with a false)
-     *
-     * 2 function pointers
-     * - contains :: returns true if it is contained in the table, false if not
-     * - put, puts the flag in the table, or does nothing if it is already in it
-     *
-     *
-     */
-} FlagLookupTable;
+void FlagLookupTable_construct_new(FlagLookupTable *flagtable);
+
+/*  TODO document
+ *
+ */
+boolean FlagLookupTable_contains(FlagLookupTable *flagtable, Flags flag);
+
+/* TODO document
+ *
+ */
+boolean FlagLookupTable_put(FlagLookupTable *flagtable, Flags flag);
+
 
 
 #endif
