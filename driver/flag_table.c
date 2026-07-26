@@ -66,6 +66,8 @@ Flags detect_flag(char *flag){
         return PARSE;
     } else if(strcmp(flag, "--codegen") == 0){
         return CODEGEN;
+    } else if(strcmp(flag, "-P") == 0){
+        return P;
     }else{
         return ERR;
     }
