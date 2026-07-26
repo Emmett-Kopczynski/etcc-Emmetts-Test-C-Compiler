@@ -1,5 +1,4 @@
 -implement the flag-handler
--implement the preprocessor
 -stub out the compiler
 -implement the assembler/linker
 -implement a very basic error catching system

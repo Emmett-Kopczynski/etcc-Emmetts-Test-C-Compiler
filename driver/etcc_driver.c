@@ -26,11 +26,15 @@
 /* Symbolic constants */
 
 int main(int argc, char *argv[]){
-    /* Start the flag lookup table */
+    /* declare and construct the flag lookup table */
     FlagLookupTable flags;
-    int ret = 0;
+    FlagLookupTable_construct_new(&flags);
+
+    /* put the used flags in the flag lookup table */
+    /* TODO */
+
     
 
-    return ret;   
+    return 0;   
 }
 

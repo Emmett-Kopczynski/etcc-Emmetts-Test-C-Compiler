@@ -5,9 +5,6 @@
  *      To Implement :
  *
  *      To Test :
- *          - FlagLookupTable_construct_new
- *          - FlagLookupTable_contains
- *          - FlagLookupTable_put 
  *
  *      To Update : 
  *
