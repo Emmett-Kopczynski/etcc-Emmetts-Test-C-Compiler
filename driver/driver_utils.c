@@ -1,4 +1,4 @@
-/* driver_utils.c :: TODO document
+/* driver_utils.c :: the c file for the driver utilitiy functions
  *
  *
  * To Do ::
@@ -6,7 +6,6 @@
  *
  *      To Test :
  *          - assemblink
- *          - get_source
  *  
  *      To Update :
  *

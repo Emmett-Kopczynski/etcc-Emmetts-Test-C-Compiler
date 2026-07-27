@@ -3,7 +3,6 @@
  * 
  * To Do :
  *      To Implement :
- *          - detect_flag
  *
  *      To Test :
  *

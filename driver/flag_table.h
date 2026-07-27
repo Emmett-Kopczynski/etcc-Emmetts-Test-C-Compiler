@@ -6,8 +6,6 @@
  * To Do : 
  *
  *      To Document :
- *          - FlagLookupTable_construct_new
- *          - detect_flag
  *
  */
 
@@ -55,10 +53,16 @@ typedef struct flaglookuptable {
 } FlagLookupTable;
 
 
-/* FlagLookupTable_construct_new :  TODO document
+/* FlagLookupTable_construct_new : constructs the given FlagLookupTable with 
+ * FlagLookupTable_put in the put pointer, FlagLookupTable_contains in the contain pointer, and
+ * it makes all elements of the flaglist variable equal false
+ *
+ * Arguments : 
+ *      - flagtable : type FlagLookupTable * : the FlagLookupTable we are constructing
  *
  */
 void FlagLookupTable_construct_new(FlagLookupTable *flagtable);
+
 
 /* FlagLookupTable_contains : 
  *
@@ -71,6 +75,7 @@ void FlagLookupTable_construct_new(FlagLookupTable *flagtable);
  */
 boolean FlagLookupTable_contains(FlagLookupTable *flagtable, Flags flag);
 
+
 /* FlagLookupTable_put : puts the given flag in the table
  *
  * Arguments : 
@@ -82,9 +87,19 @@ boolean FlagLookupTable_contains(FlagLookupTable *flagtable, Flags flag);
  */
 boolean FlagLookupTable_put(FlagLookupTable *flagtable, Flags flag);
 
-/* TODO document 
+
+/* detect_flag : given the flag, this function returns the symbolic enum representation 
+ * of that flag, used in the process of parsing the command line arguments
+ *
+ * Arguments :
+ *      - flag : type char * : the given flag from the command line
+ *
+ * Returns : 
+ *      - the symbolic representation of the flag as a Flags enum, returning the 
+ *      ERR flag if it is ureconized
  *
  */
 Flags detect_flag(char *flag);
+
 
 #endif
