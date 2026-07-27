@@ -81,6 +81,8 @@ int preprocess(char *input_file, FlagLookupTable flags){
 
     /* should call gcc -E -P INPUT_FILE.c -o PREPROCESSED_FILE.i */
     ret = system(fcmd); /* gives ret the exit number of the system call */ 
+    if(ret != 0)
+        fprintf(stderr, "ERROR :: gcc preprocessor failed\n");
 
     /* frees the allocated memory from fcmd */
     free(fcmd);
