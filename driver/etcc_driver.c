@@ -5,16 +5,12 @@
  * 
  * 
  * To Do :
- * - Implement the gcc preprocessor
  * - Implement the running of the etcc compiler
- * - implement the gcc assembler and linker
- * - implement a basic error messaging system for the compiler
- * 
  *  
  */
 
 /* symbolic constants */
-
+#define BUFFERLEN 10000
 
 /* inclusions from c standard */
 #include <stdio.h>
@@ -25,12 +21,11 @@
 #include "driver_utils.h"
 #include "flag_table.h"
 
-/* Symbolic constants */
 
 int main(int argc, char *argv[]){
     
     /* builds the cmd */
-    char cmd[10000];
+    char cmd[BUFFERLEN];
     int i;
     i = 0;
     for(i = 0; i < argc; i ++){
@@ -49,14 +44,25 @@ int main(int argc, char *argv[]){
 
     /* find the source file */
     char source[strlen(cmd)];
-    /* TODO make a find source function */
+    if(get_source(cmd, source) != 0)
+        return 1;
+    
+
+    /* call the preprocessor */
+    if( preprocess(source, flagtable) != 0)
+        return 1;
+
+    /* STOP AFTER PREPROCESSOR IF -P is active */
+    if(flagtable.contains(&flagtable, P))
+        return 0;
 
     /* call the compiler */
     // TODO implement the compiler */
     
+    /* deletes the preprocessed file */
     /* TODO delete the .i file */
         
-
+    
     if(flagtable.contains(&flagtable, S) == False){
         /* link and assemble */
         // TODO implement the gcc assembler/linker
