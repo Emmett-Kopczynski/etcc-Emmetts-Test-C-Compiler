@@ -1,0 +1,8 @@
+
+- make the token structure
+- figure out how we are going to store the list of tokens,
+PROBABLY A QUEUE
+- write the makefile
+- figure out what functions are needed in the lexer_utils files
+- figure out what is needed in the lexer files
+
