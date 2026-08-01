@@ -36,7 +36,6 @@ typedef enum {
 typedef struct token {
     TokenType type;
     char *info;
-    char *(*toString)(struct token *);
     /* TODO implement */
 } Token;
 
@@ -46,9 +45,9 @@ typedef struct token {
  *
  */
 typedef struct token_node {
-    Token data;
-    Token next;
-    Token prev;
+    Token *data;
+    struct token_node *next;
+    struct token_node *prev;
 } TokenNode;
 
 
@@ -56,8 +55,8 @@ typedef struct token_node {
  *
  */
 typedef struct token_queue {
-    TokenNode first;
-    TokenNode last;
+    TokenNode *first;
+    TokenNode *last;
 } TokenQueue;
 
 
@@ -69,9 +68,6 @@ typedef struct token_queue {
 /* function possibiliteis :
  * - clean token 
  * - construct token 
- * - to string for the token
- *
- *
  */
 
 /* TODO document construct_token 
@@ -95,6 +91,24 @@ int clean_token(Token *to_clean);
 
 /* TOKEN NODE FUNCTIONS START */
 /* TODO make the token node functions */
+/* function possibilities :
+ * - construct_token_node
+ * - clean_token_node
+ *
+ */
+
+/* TODO document construct_token_node
+ *
+ */
+TokenNode * construct_token_node(Token *data, TokenNode *prev, TokenNode *next);
+
+
+/* TODO document clean_token_node
+ *
+ */
+int clean_token_node(TokenNode *to_clean);
+
+
 /* TOKEN NODE FUNCTIONS END */
 
 

@@ -6,7 +6,9 @@
  * 
  * To Do :
  * - Implement the running of the etcc compiler
- *  
+ * 
+ * Known Bugs : 
+ *      - possibility of error on the build cmd on the strcat cmd, argv[i] line due to a "conditional jump that depends on unititialized values" 
  */
 
 /* symbolic constants */

@@ -25,6 +25,11 @@
 #include "token.h"
 
 
+
+
+
+/* TOKEN FUNCTIONS START */
+
 Token * construct_token(TokenType type, char *info){
     Token *ret_token; /* the token being built */
 
@@ -54,4 +59,35 @@ int clean_token(Token *to_clean){
 
     return 0; /* TODO add error codes */
 } /* TODO implement */
+
+/* TOKEN FUNCTIONS END */
+
+
+
+
+
+/* TOKEN NODE FUNCTIONS START */
+
+TokenNode * construct_token_node(Token *data, TokenNode *prev, TokenNode *next){
+    return NULL;
+} /* TODO Implement */
+
+
+int clean_token_node(TokenNode *to_clean){
+    return -1;
+} /* TODO implement */
+
+/* TOKEN NODE FUNCTIONS END */
+
+
+
+
+
+/* TOKEN QUEUE FUNCTIONS START */
+/* TOKEN QUEUE FUNCTIONS END */
+
+
+
+
+
 
