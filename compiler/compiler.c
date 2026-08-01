@@ -14,14 +14,18 @@
  */
 
 /* c standard inclusions */
-
+#include <stdio.h>
 
 /* homemade inclusions */
 #include "compiler.h"
 #include "lexer.h"
 #include "token.h"
+#include "../driver/flag_table.h"
 
-int compile(){
-    return -1;
+
+int compile(char *sourcepath, FlagLookupTable flags){
+    
+    
+    return 0;
 } /* TODO implement */
 

@@ -10,7 +10,17 @@
  */
 
 
-int compile();
+/* c standard inclusions */
+#include <stdio.h>
+
+/* homemade inclusions */
+#include "../driver/flag_table.h"
+
+
+/*
+ *
+ */
+int compile(char *sourcepath, FlagLookupTable flags);
 
 
 

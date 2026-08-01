@@ -8,6 +8,14 @@
  *
  */
 
+
+/* c standard inclusions */
+#include <stdio.h>
+
+/* homemade inclusions */
+#include "token.h"
+#include "../driver/flag_table.h"
+
 /* TODO document lexer_module
  *
  * NOTE : likely argumets include
@@ -16,7 +24,7 @@
  * -
  *
  */
-int lexer_module(); /* TODO : figure out the needed arguments for the lexer module */
+int lexer_module(FILE *source, TokenQueue tokqueue, FlagLookupTable flags); 
 
 
 #endif
