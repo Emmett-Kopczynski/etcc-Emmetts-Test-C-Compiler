@@ -30,6 +30,8 @@ typedef enum {
  */
 typedef struct token {
     TokenType type;
+    char *info;
+    char *(*toString)(struct token *);
     /* TODO implement */
 } Token;
 
@@ -43,5 +45,36 @@ typedef struct token_queue {
 } TokenQueue;
 
 
+
+
+
+/* TOKEN FUNCTIONS START */
+/* TODO make the token functions */
+/* function possibiliteis :
+ * - clean token 
+ * - construct token 
+ * - to string for the token
+ *
+ *
+ */
+/* TOKEN FUNCTIONS END */
+
+
+
+
+
+
+/* TOKEN QUEUE FUNCTIONS START */
+/* TODO make the TokenQueue functions */
+/* function possibilities :
+ * - clean queue function
+ * - add to back of the queue
+ * - peek from queue
+ * - pop from front of the queue
+ * - tostring function for the queue, line breaks on semicolons
+ * - get size function
+ *
+ */
+/* TOKEN QUEUE FUNCTION END */
 
 #endif

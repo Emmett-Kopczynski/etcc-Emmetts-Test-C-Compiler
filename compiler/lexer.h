@@ -8,5 +8,15 @@
  *
  */
 
+/* TODO document lexer_module
+ *
+ * NOTE : likely argumets include
+ * - an empty token queue
+ * - the flag lookup table
+ * -
+ *
+ */
+int lexer_module(); /* TODO : figure out the needed arguments for the lexer module */
+
 
 #endif
