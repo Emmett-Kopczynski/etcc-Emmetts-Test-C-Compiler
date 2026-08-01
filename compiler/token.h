@@ -48,6 +48,7 @@ typedef struct token {
 typedef struct token_node {
     Token data;
     Token next;
+    Token prev;
 } TokenNode;
 
 
@@ -55,7 +56,8 @@ typedef struct token_node {
  *
  */
 typedef struct token_queue {
-
+    TokenNode first;
+    TokenNode last;
 } TokenQueue;
 
 
@@ -81,7 +83,7 @@ Token * construct_token(TokenType type, char *info);
 /* TODO document clean_token
  *
  */
-int clean_token(Token to_clean);
+int clean_token(Token *to_clean);
 
 
 /* TOKEN FUNCTIONS END */
@@ -112,5 +114,7 @@ int clean_token(Token to_clean);
  *
  */
 /* TOKEN QUEUE FUNCTION END */
+
+
 
 #endif

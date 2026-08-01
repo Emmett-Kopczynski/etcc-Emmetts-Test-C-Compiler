@@ -19,6 +19,7 @@
 /* homemade inclusions */
 #include "compiler.h"
 #include "lexer.h"
+#include "token.h"
 
 int compile(){
     return -1;
