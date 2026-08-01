@@ -8,6 +8,7 @@
  *          - Token
  *          - TokenType
  *          - TokenQueue
+ *          -construct_token
  *
  */
 
@@ -20,7 +21,11 @@ typedef enum {
     KEYWORD, /* keywords for the language, like int, void, and return */
     IDENTIFYER, /* ASCII identifiers for variables, functions, and more */
     CONSTANT, /* numeric literals throughout the code */
-    SEMICOLON ./* Semicolons, the end of a phrase */
+    SEMICOLON, /* Semicolons, the end of a phrase */
+    OPEN_BRACE, /* the open brace { */ 
+    CLOSE_BRACE, /* the close brace } */
+    OPEN_PAR, /* the open parenthasis ( */
+    CLOSE_PAR /* the closed parenthasis ) */
 } TokenType;
 
 
@@ -36,12 +41,21 @@ typedef struct token {
 } Token;
 
 
+/* TokenNode : TODO document 
+ *
+ *
+ */
+typedef struct token_node {
+    Token data;
+    Token next;
+} TokenNode;
+
 
 /* TokenQueue : TODO document 
  *
  */
 typedef struct token_queue {
-    /* TODO implement */
+
 } TokenQueue;
 
 
@@ -57,7 +71,29 @@ typedef struct token_queue {
  *
  *
  */
+
+/* TODO document construct_token 
+ *
+ */
+Token * construct_token(TokenType type, char *info);
+
+
+/* TODO document clean_token
+ *
+ */
+int clean_token(Token to_clean);
+
+
 /* TOKEN FUNCTIONS END */
+
+
+
+
+
+
+/* TOKEN NODE FUNCTIONS START */
+/* TODO make the token node functions */
+/* TOKEN NODE FUNCTIONS END */
 
 
 

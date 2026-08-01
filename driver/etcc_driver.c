@@ -20,7 +20,7 @@
 #include "../util/boolean.h"
 #include "driver_utils.h"
 #include "flag_table.h"
-
+#include "../compiler/compiler.h" /* the compiler */
 
 int main(int argc, char *argv[]){
     

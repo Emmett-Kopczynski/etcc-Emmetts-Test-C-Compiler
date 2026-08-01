@@ -1,41 +1,36 @@
 CC = gcc
 CFLAGS = -g -Wall
-
-#header groups
-HUTIL = util/*.h
+OUT = etcc
 
 #source Groups
-SUTIL = util/*.c
+SUTIL = NOTHING YET #util sources
+SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/etcc_driver.c #driver sources
+SCOMP = compiler/compiler.c #compiler sources
+SLEX = compiler/lexer.c #lexer sources
+
 
 #emmett compilers
-ECC = NOTHING YET
+ECC = etcc
 ECFLAGS = NOTHING YET
 
 #pushpath
-PUSHPATH = ~/.local/bin/
+PUSHPATH = ~/.local/bin/$(OUT)
 
-
-default: bdriver
-
-#builds the driver
-bdriver:
-	$(CC) $(CFLAGS) driver/etcc_driver.c -o etcc
-
-#builds the compiler
-bcompiler:
+#default command
+default: build
 
 #builds everything
-build: driver compiler
+build: 
+	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) -o $(OUT)
 
 #cleaners
 c: clear
 clear: clean
 clean:
-	rm etcc
+	rm $(OUT)
 
 
 #builds, and pushes the most recent binaries into the local bin so that they can be executed from anywhere
 push: build
-	#TODO write the push function in the makefile
-
+	cp etcc $(PUSHPATH)
 
