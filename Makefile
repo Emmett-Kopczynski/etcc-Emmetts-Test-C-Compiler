@@ -3,10 +3,10 @@ CFLAGS = -g -Wall
 OUT = etcc
 
 #source Groups
-SUTIL = NOTHING YET #util sources
-SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/etcc_driver.c #driver sources
-SCOMP = compiler/compiler.c #compiler sources
-SLEX = compiler/lexer.c  compiler/lexer_utils.c  compiler/token.c #lexer sources
+SUTIL = NOTHING YET # util sources
+SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/etcc_driver.c # driver sources
+SCOMP = compiler/compiler.c compiler/token.c # general compiler sources
+SLEX = compiler/lexer.c  compiler/lexer_utils.c  # lexer sources
 
 
 #emmett compilers

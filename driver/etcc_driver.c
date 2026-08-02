@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
         return 0;
 
     /* call the compiler */
-    // TODO implement the compiler */
+    compile(source, flagtable);
     
     /* deletes the preprocessed file */
     /* TODO delete the .i file */

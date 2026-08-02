@@ -1,0 +1,2 @@
+- finish documenting compiler.c and compiler.h in compiler.txt
+- finish documenting token.c and token.h in token.txt

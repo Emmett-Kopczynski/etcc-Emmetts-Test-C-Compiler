@@ -5,10 +5,19 @@
  * To Do :
  *
  *      To Document :
- *          - Token
  *          - TokenType
  *          - TokenQueue
- *          -construct_token
+ *          - construct_token
+ *          - clean_token
+ *          - construct_token_node
+ *          - clean_token_node
+ *          - construct_token_queue
+ *          - clean_token_queue
+ *          - token_queue_enqueue
+ *          - token_queue_peek
+ *          - token_queue_dequeue
+ *          - token_queue_size
+ *          - token_queue_to_string
  *
  */
 
@@ -30,13 +39,16 @@ typedef enum {
 
 
 
-/* Token : TODO document
+/* Token : represents a single token of a c program, like a semicolon, constant variable, e.t.c
+ *
+ * Variables : 
+ *      - type : type TokenType : the type of token we are storing
+ *      - info : type char * : the info stored in the token
  *
  */
 typedef struct token {
     TokenType type;
     char *info;
-    /* TODO implement */
 } Token;
 
 
@@ -57,6 +69,7 @@ typedef struct token_node {
 typedef struct token_queue {
     TokenNode *first;
     TokenNode *last;
+    int size;
 } TokenQueue;
 
 
@@ -64,11 +77,7 @@ typedef struct token_queue {
 
 
 /* TOKEN FUNCTIONS START */
-/* TODO make the token functions */
-/* function possibiliteis :
- * - clean token 
- * - construct token 
- */
+
 
 /* TODO document construct_token 
  *
@@ -90,17 +99,12 @@ int clean_token(Token *to_clean);
 
 
 /* TOKEN NODE FUNCTIONS START */
-/* TODO make the token node functions */
-/* function possibilities :
- * - construct_token_node
- * - clean_token_node
- *
- */
+
 
 /* TODO document construct_token_node
  *
  */
-TokenNode * construct_token_node(Token *data, TokenNode *prev, TokenNode *next);
+TokenNode * construct_token_node(TokenType type, char *info, TokenNode *prev, TokenNode *next);
 
 
 /* TODO document clean_token_node
@@ -117,17 +121,52 @@ int clean_token_node(TokenNode *to_clean);
 
 
 /* TOKEN QUEUE FUNCTIONS START */
-/* TODO make the TokenQueue functions */
-/* function possibilities :
- * - clean queue function
- * - add to back of the queue
- * - peek from queue
- * - pop from front of the queue
- * - tostring function for the queue, line breaks on semicolons
- * - get size function
+
+
+/* TODO document construct_token_queue
  *
  */
+TokenQueue * construct_token_queue();
+
+
+/* TODO document clean_token_queue
+ *
+ */
+int clean_token_queue(TokenQueue *to_clean);
+
+
+/* TODO document token_queue_enqueue
+ *
+ */
+void token_queue_enqueue(TokenQueue *queue, Token *to_add);
+
+
+/* TODO document token_queue_peek
+ *
+ */
+Token *token_queue_peek(TokenQueue *queue);
+
+
+/* TODO document token_queue_dequeue
+ *
+ */
+Token *token_queue_dequeue(TokenQueue *queue);
+
+
+/* TODO document token_queue_size
+ *
+ */
+int token_queue_size(TokenQueue *queue);
+
+
+/* TODO document token_queue_to_string
+ *
+ */
+char *token_queue_to_string(TokenQueue *queue);
+
+
 /* TOKEN QUEUE FUNCTION END */
+
 
 
 
