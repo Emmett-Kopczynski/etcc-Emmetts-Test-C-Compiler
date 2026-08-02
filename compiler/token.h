@@ -5,10 +5,7 @@
  * To Do :
  *
  *      To Document :
- *          - TokenType
  *          - TokenQueue
- *          - construct_token
- *          - clean_token
  *          - construct_token_node
  *          - clean_token_node
  *          - construct_token_queue
@@ -23,7 +20,8 @@
 
 
 
-/* TokenType : TODO document
+/* TokenType : the different types of token that the Token data 
+ * structure might store
  *
  */
 typedef enum {
@@ -45,6 +43,10 @@ typedef enum {
  *      - type : type TokenType : the type of token we are storing
  *      - info : type char * : the info stored in the token
  *
+ * Related Functions : 
+ *      - construct_token
+ *      - clean_token
+ *
  */
 typedef struct token {
     TokenType type;
@@ -52,8 +54,13 @@ typedef struct token {
 } Token;
 
 
-/* TokenNode : TODO document 
+/* TokenNode : a single node that stores a token, and 2 refrences
+ * to other TokenNodes, a prev and a next. Mainly used in the TokenQueue
+ * data structure
  *
+ *  Related Functions :
+ *      - construct_token_node
+ *      - clean_token_node 
  *
  */
 typedef struct token_node {
@@ -79,13 +86,28 @@ typedef struct token_queue {
 /* TOKEN FUNCTIONS START */
 
 
-/* TODO document construct_token 
+/* construct_token : constructs a token data structure with the 
+ * given information
+ *
+ * Arguments : 
+ *      - type : type TokenType : the type of token we are making
+ *      - info : type char * : the info stored in the token
+ *
+ * Returns :
+ *      - a token pointer with allocated memory, MUST BE CLEANED
  *
  */
 Token * construct_token(TokenType type, char *info);
 
 
-/* TODO document clean_token
+/* clean_token : cleans the given token, freeing all memory that the
+ * token took up
+ *
+ * Arguments : 
+ *      - to_clean : type Token * : the Token we are cleaning
+ *
+ * Returns :
+ *      - 0 if everything went well, otherwise a different number
  *
  */
 int clean_token(Token *to_clean);
