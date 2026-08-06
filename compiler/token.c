@@ -3,12 +3,9 @@
  *  To Do :
  *      
  *      To Implement:
- *          - construct_token_queue
  *          - clean_token_queue
- *          - token_queue_enqueue
  *          - token_queue_peek
  *          - token_queue_dequeue
- *          - token_queue_size
  *          - token_queue_to_string
  *
  *
@@ -17,6 +14,9 @@
  *          - clean_token_node 
  *
  *      To Test :
+ *          - construct_token_queue
+ *          - token_queue_size 
+ *          - token_queue_enqueue
  *
  *
  * Known Bugs :
@@ -124,8 +124,18 @@ int clean_token_node(TokenNode *to_clean){
 /* TOKEN QUEUE FUNCTIONS START */
 
 TokenQueue * construct_token_queue(){
-    return NULL;
-} /* TODO implement */
+    TokenQueue *ret_queue;
+    
+    /* allocates memory to ret_queue */
+    ret_queue = malloc(sizeof(TokenQueue)); 
+    
+    /* sets elements of ret_queue */
+    ret_queue->first = NULL;
+    ret_queue->last = NULL;
+    ret_queue->size = 0;
+
+    return ret_queue;
+} 
 
 
 int clean_token_queue(TokenQueue *to_clean){
@@ -133,9 +143,25 @@ int clean_token_queue(TokenQueue *to_clean){
 } /* TODO implement */
 
 
-void token_queue_enqueue(TokenQueue *queue, Token *to_add){
-    return;
-} /* TODO implement */
+void token_queue_enqueue(TokenQueue *queue, TokenType type, char *info){
+    if(queue->size == 0){
+        /* makes the first node in the queue */
+       queue->last = construct_token_node(type, info, NULL, NULL); 
+       queue->first = queue->last;
+    } else {
+        /* adds to the beginning of the queue */
+        
+        /* makes a node right before the first one */
+        queue->first->prev = construct_token_node(type, info, NULL, queue->first);
+        
+        /* reassigns first */
+        queue->first = queue->first->prev;
+    }
+
+    /* updates size */
+    queue->size += 1;
+
+} 
 
 
 Token *token_queue_peek(TokenQueue *queue){
@@ -149,8 +175,8 @@ Token *token_queue_dequeue(TokenQueue *queue){
 
 
 int token_queue_size(TokenQueue *queue){
-    return -1;
-} /* TODO implement */
+    return queue->size;
+} 
 
 
 char  *token_queue_to_string(TokenQueue *queue){

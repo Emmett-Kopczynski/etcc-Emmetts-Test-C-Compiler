@@ -160,7 +160,7 @@ int clean_token_queue(TokenQueue *to_clean);
 /* TODO document token_queue_enqueue
  *
  */
-void token_queue_enqueue(TokenQueue *queue, Token *to_add);
+void token_queue_enqueue(TokenQueue *queue, TokenType type, char *info);
 
 
 /* TODO document token_queue_peek
