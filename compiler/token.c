@@ -122,6 +122,41 @@ int clean_token_node(TokenNode *to_clean){
 
 
 /* TOKEN QUEUE FUNCTIONS START */
+
+TokenQueue * construct_token_queue(){
+    return NULL;
+} /* TODO implement */
+
+
+int clean_token_queue(TokenQueue *to_clean){
+    return -1;
+} /* TODO implement */
+
+
+void token_queue_enqueue(TokenQueue *queue, Token *to_add){
+    return;
+} /* TODO implement */
+
+
+Token *token_queue_peek(TokenQueue *queue){
+    return NULL;
+} /* TODO implement */
+
+
+Token *token_queue_dequeue(TokenQueue *queue){
+    return NULL;
+} /* TODO implement */
+
+
+int token_queue_size(TokenQueue *queue){
+    return -1;
+} /* TODO implement */
+
+
+char  *token_queue_to_string(TokenQueue *queue){
+    return NULL;
+} /* TODO implement */
+
 /* TOKEN QUEUE FUNCTIONS END */
 
 
