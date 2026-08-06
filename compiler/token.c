@@ -3,21 +3,17 @@
  *  To Do :
  *      
  *      To Implement:
- *          - clean_token_queue
  *          - token_queue_peek
- *          - token_queue_dequeue
  *          - token_queue_to_string
  *
  *
  *      To Update : 
+ *          - construct_token_queue
  *          - clean_token
  *          - clean_token_node 
+ *          - clean_token_queue
  *
  *      To Test :
- *          - construct_token_queue
- *          - token_queue_size 
- *          - token_queue_enqueue
- *
  *
  * Known Bugs :
  *
@@ -133,14 +129,31 @@ TokenQueue * construct_token_queue(){
     ret_queue->first = NULL;
     ret_queue->last = NULL;
     ret_queue->size = 0;
+    
+    /* does the function pointers */
+    /* TODO add the function pointers */  
 
     return ret_queue;
 } 
 
 
 int clean_token_queue(TokenQueue *to_clean){
-    return -1;
-} /* TODO implement */
+    /* loop through entire queue to clean/remove all tokens */
+    while(to_clean->size > 0){
+        clean_token( token_queue_dequeue(to_clean) );
+    }
+
+    /* sets all inner data to null or 0 */
+    to_clean->size = 0;
+    to_clean->first = NULL;
+    to_clean->last = NULL;
+
+    /* free the memory taken up by the TokenQueue itself */
+    free(to_clean);
+    to_clean = NULL;
+
+    return 0; /* TODO add error codes */
+} 
 
 
 void token_queue_enqueue(TokenQueue *queue, TokenType type, char *info){
@@ -170,8 +183,26 @@ Token *token_queue_peek(TokenQueue *queue){
 
 
 Token *token_queue_dequeue(TokenQueue *queue){
-    return NULL;
-} /* TODO implement */
+    if(queue->size == 0){
+        return NULL; /* not supposed to happen */
+    }
+
+    /* extracts the needed node */
+    TokenNode *ret_node = queue->last;
+    
+    /* moves last back one */
+    queue->last = queue->last->prev;
+
+    /* extracts the token from the node */
+    Token *ret_token = construct_token(ret_node->data->type, ret_node->data->info);
+    
+    /* cleans up the now uneeded node */
+    clean_token_node(ret_node);
+    
+
+    queue->size -= 1;
+    return ret_token;
+}
 
 
 int token_queue_size(TokenQueue *queue){

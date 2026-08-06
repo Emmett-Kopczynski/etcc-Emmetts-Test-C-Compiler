@@ -1,6 +1,5 @@
 #ifndef TOKEN_H_
-#define TOKEN_H_
-/* token.h : TODO document
+#define TOKEN_H_ /* token.h : TODO document
  *
  * To Do :
  *
@@ -77,6 +76,14 @@ typedef struct token_queue {
     TokenNode *first;
     TokenNode *last;
     int size;
+
+    /* function pointers */
+    void (*enqueue)(struct token_queue *queue, TokenType type, char info);
+    Token *(*peek)(struct token_queue *queue);
+    Token *(*dequeue)(struct token_queue *queue);
+    int (*get_size)(struct token_queue *queue);
+    char *(*to_string)(struct token_queue *queue);
+
 } TokenQueue;
 
 
