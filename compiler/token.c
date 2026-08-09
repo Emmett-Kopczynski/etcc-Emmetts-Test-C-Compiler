@@ -3,18 +3,17 @@
  *  To Do :
  *      
  *      To Implement:
- *          - token_queue_peek
- *          - token_queue_to_string
+ *          - token_queue_print
  *
  *
  *      To Update : 
- *          - construct_token_queue
  *          - clean_token
  *          - clean_token_node 
  *          - clean_token_queue
  *
  *      To Test :
- *
+ *          - token_queue_peek
+ * 
  * Known Bugs :
  *
  *
@@ -131,7 +130,11 @@ TokenQueue * construct_token_queue(){
     ret_queue->size = 0;
     
     /* does the function pointers */
-    /* TODO add the function pointers */  
+    ret_queue->peek = &token_queue_peek;
+    ret_queue->enqueue = &token_queue_enqueue;
+    ret_queue->get_size = &token_queue_size;
+    ret_queue->dequeue = &token_queue_dequeue;
+    ret_queue->print = &token_queue_print;
 
     return ret_queue;
 } 
@@ -178,8 +181,11 @@ void token_queue_enqueue(TokenQueue *queue, TokenType type, char *info){
 
 
 Token *token_queue_peek(TokenQueue *queue){
-    return NULL;
-} /* TODO implement */
+    /* NOTE :: this memeory must be deleted outside of this function*/
+    Token *ret_token = construct_token(queue->last->data->type, queue->last->data->info); 
+        
+    return ret_token;
+} 
 
 
 Token *token_queue_dequeue(TokenQueue *queue){
@@ -210,9 +216,26 @@ int token_queue_size(TokenQueue *queue){
 } 
 
 
-char  *token_queue_to_string(TokenQueue *queue){
-    return NULL;
-} /* TODO implement */
+int token_queue_print(TokenQueue *queue){
+    TokenNode *cur = queue->first;
+    
+    /* goes through every node in the queue */
+    while(cur->next != NULL){
+        printf("%s ", cur->data->info);
+        
+        /* makes a newline if info is ;, {, or } */
+        if(strcmp(";", cur->data->info) == 0 
+                || strcmp("{", cur->data->info) == 0 
+                || strcmp("}", cur->data->info) == 0){
+            printf("\n");
+        }
+        
+        /* moves on to the next node */
+        cur = cur->next;
+    }
+
+    return 0;   
+}
 
 /* TOKEN QUEUE FUNCTIONS END */
 

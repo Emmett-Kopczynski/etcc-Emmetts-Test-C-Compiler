@@ -1,10 +1,10 @@
 #ifndef TOKEN_H_
-#define TOKEN_H_ /* token.h : TODO document
+#define TOKEN_H_ 
+/* token.h : TODO document
  *
  * To Do :
  *
  *      To Document :
- *          - TokenQueue
  *          - construct_token_node
  *          - clean_token_node
  *          - construct_token_queue
@@ -13,7 +13,7 @@
  *          - token_queue_peek
  *          - token_queue_dequeue
  *          - token_queue_size
- *          - token_queue_to_string
+ *          - token_queue_print
  *
  */
 
@@ -69,7 +69,20 @@ typedef struct token_node {
 } TokenNode;
 
 
-/* TokenQueue : TODO document 
+/* TokenQueue : The main structure for orderly storing tokens, in
+ * a FIFO queue
+ *
+ * Variables : 
+ *      - first : type TokenNode * : back of the queue
+ *      - last : type TokenNode * : front of the queue
+ *      - size : type int : the number of elements in the queue
+ *
+ * Function Pointers :
+ *      - enqueue : see token_queue_enqueue
+ *      - dequeue : see token_queue_dequeue
+ *      - get_size : see token_queue_size
+ *      - peek : see token_queue_peek
+ *      - print : see token_queue_print
  *
  */
 typedef struct token_queue {
@@ -78,11 +91,11 @@ typedef struct token_queue {
     int size;
 
     /* function pointers */
-    void (*enqueue)(struct token_queue *queue, TokenType type, char info);
+    void (*enqueue)(struct token_queue *queue, TokenType type, char *info);
     Token *(*peek)(struct token_queue *queue);
     Token *(*dequeue)(struct token_queue *queue);
     int (*get_size)(struct token_queue *queue);
-    char *(*to_string)(struct token_queue *queue);
+    int (*print)(struct token_queue *queue);
 
 } TokenQueue;
 
@@ -191,7 +204,7 @@ int token_queue_size(TokenQueue *queue);
 /* TODO document token_queue_to_string
  *
  */
-char *token_queue_to_string(TokenQueue *queue);
+int token_queue_print(TokenQueue *queue);
 
 
 /* TOKEN QUEUE FUNCTION END */
