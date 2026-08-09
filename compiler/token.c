@@ -12,8 +12,6 @@
  *          - clean_token_queue
  *
  *      To Test :
- *          - token_queue_peek
- *          - token_queue_print
  * 
  * Known Bugs :
  *
@@ -218,10 +216,10 @@ int token_queue_size(TokenQueue *queue){
 
 
 int token_queue_print(TokenQueue *queue){
-    TokenNode *cur = queue->first;
+    TokenNode *cur = queue->last;
     
     /* goes through every node in the queue */
-    while(cur->next != NULL){
+    while(cur != NULL){
         printf("%s ", cur->data->info);
         
         /* makes a newline if info is ;, {, or } */
@@ -232,7 +230,7 @@ int token_queue_print(TokenQueue *queue){
         }
         
         /* moves on to the next node */
-        cur = cur->next;
+        cur = cur->prev;
     }
 
     return 0;   

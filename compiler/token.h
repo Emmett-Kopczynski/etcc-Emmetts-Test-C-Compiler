@@ -5,11 +5,6 @@
  * To Do :
  *
  *      To Document :
- *          - clean_token_node
- *          - construct_token_queue
- *          - clean_token_queue
- *          - token_queue_enqueue
- *          - token_queue_peek
  *          - token_queue_dequeue
  *          - token_queue_size
  *          - token_queue_print
@@ -149,11 +144,22 @@ int clean_token(Token *to_clean);
  *      - info : type char * : the info that the inner token is storing
  *      - prev : type TokenNode * : the reference to the previous node
  *      - next : type TokenNode * : the reference to the next node
+ *
+ * Returns : 
+ *      - the TokenNode pointer constructed to the given specs
+ *
  */
 TokenNode * construct_token_node(TokenType type, char *info, TokenNode *prev, TokenNode *next);
 
 
-/* TODO document clean_token_node
+/* clean_token_node : cleans the given token node, freeing all memory that the 
+ * token node took up
+ *
+ * Arguments :
+ *      - to_clean : type TokenNode * : the TokenNode pointer we are cleaning
+ *
+ * Returns : 
+ *      - 0 if everything went well, otherwise a different number
  *
  */
 int clean_token_node(TokenNode *to_clean);
@@ -169,43 +175,89 @@ int clean_token_node(TokenNode *to_clean);
 /* TOKEN QUEUE FUNCTIONS START */
 
 
-/* TODO document construct_token_queue
+/* construct_token_queue : constructs an empty TokenQueue
+ *
+ * Returns : 
+ *      - an empty TokenQueue
  *
  */
 TokenQueue * construct_token_queue();
 
 
-/* TODO document clean_token_queue
+/* clean_token_queue : cleans the memory for a TokenQueue, 
+ * freeing all memory it took up in the heap
+ *
+ * Arguments : 
+ *      - to_clean : type TokenQueue * : the TokenQueue to be cleaned 
+ *
+ * Returns : 
+ *      - 0 if everything went well, otherwise another number
  *
  */
 int clean_token_queue(TokenQueue *to_clean);
 
 
-/* TODO document token_queue_enqueue
+/* token_queue_enqueue : adds a token with the given specs into a new node at the back of
+ * the TokenQueue
+ *
+ * Arguments :
+ *      - queue : type TokenQueue * : the TokenQueue we are adding to
+ *      - type : type TokenType : the type of token we are adding
+ *      - info : type char * : the info the new token will store
  *
  */
 void token_queue_enqueue(TokenQueue *queue, TokenType type, char *info);
 
 
-/* TODO document token_queue_peek
+/* token_queue_peek : return the token at the front of the given TokenQueue
+ *
+ * Arguments :
+ *      - queue : type TokenQueue * : the TokenQueue we are peeking from
+ *
+ * Returns : 
+ *      - a Token * that is a copy of the one stored at the front of the TokenQueue, 
+ *      you must clean this new token at some point
  *
  */
 Token *token_queue_peek(TokenQueue *queue);
 
 
-/* TODO document token_queue_dequeue
+/* token_queue_dequeue : removes the token at the front of the given
+ * TokenQueue, and returns a copy of it
+ *
+ * Arguments :
+ *      - queue : type TokenQueue * : the TokenQueue we are dequeueing from
+ *
+ * Returns : 
+ *      - A Token * that is a copy of the Token that was stored at the front of the TokenQueue
+ *       before we just removed it
  *
  */
 Token *token_queue_dequeue(TokenQueue *queue);
 
 
-/* TODO document token_queue_size
+/* token_queue_size : returns the number of TokenNodes in the given
+ * TokenQueue
+ *
+ * Arguments : 
+ *      - queue : TokenQueue * : the TokenQueue we are checking the size of
+ *
+ * Returns : 
+ *      - an integer that represents the number of elements in the given 
+ *      TokenQueue
  *
  */
 int token_queue_size(TokenQueue *queue);
 
 
-/* TODO document token_queue_to_string
+/* token_queue_print : prints the given TokenQueue to the console from front to back; that is, 
+ * in the order that the elements were enqueued
+ *
+ * Arguments : 
+ *      - queue : type TokenQueue * : the TokenQueue that we are printing
+ *
+ * Return : 
+ *      - a 0 if everyghing went well, otherwise a different number
  *
  */
 int token_queue_print(TokenQueue *queue);
