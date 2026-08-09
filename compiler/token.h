@@ -1,11 +1,10 @@
 #ifndef TOKEN_H_
 #define TOKEN_H_ 
-/* token.h : TODO document
+/* token.h : the .h file for the 3 Token data structures, Token, TokenNode, and TokenQueue
  *
  * To Do :
  *
  *      To Document :
- *          - construct_token_node
  *          - clean_token_node
  *          - construct_token_queue
  *          - clean_token_queue
@@ -143,8 +142,13 @@ int clean_token(Token *to_clean);
 /* TOKEN NODE FUNCTIONS START */
 
 
-/* TODO document construct_token_node
- *
+/* construct_token_node : constructs a token node with the given properties
+ * 
+ * Arguments : 
+ *      - type : type TokenType : the type of token that the node is storing
+ *      - info : type char * : the info that the inner token is storing
+ *      - prev : type TokenNode * : the reference to the previous node
+ *      - next : type TokenNode * : the reference to the next node
  */
 TokenNode * construct_token_node(TokenType type, char *info, TokenNode *prev, TokenNode *next);
 
