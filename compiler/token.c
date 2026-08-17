@@ -223,9 +223,9 @@ int token_queue_print(TokenQueue *queue){
         printf("%d(%s) ", cur->data->type, cur->data->info);
         
         /* makes a newline if info is ;, {, or } */
-        if(strcmp(";", cur->data->info) == 0 
-                || strcmp("{", cur->data->info) == 0 
-                || strcmp("}", cur->data->info) == 0){
+        if( cur->data->type == SEMICOLON
+                || cur->data->type == OPEN_BRACE
+                || cur->data->type == CLOSE_BRACE) {
             printf("\n");
         }
         

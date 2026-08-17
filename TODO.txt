@@ -1,5 +1,5 @@
 
 Big Picture ::
 - create the minimal compiler
-- update the driver to work in the minimal compiler
 - figure out everything that the preprosessor is supposed to do, and make the preprosessor todo list
+

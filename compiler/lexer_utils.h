@@ -5,9 +5,22 @@
  * To Do :
  *      
  *      To Document :
+ *          - get_token_type
  *
  */
 
+
+/* homemade inclusions */
+#include "token.h"
+
+
+
+/* TODO document get_token_type
+ *
+ * NOTE :: this function tries to figure out what the tokentype of the given token is
+ *
+ */
+TokenType get_token_type(char *pre_token);
 
 
 
