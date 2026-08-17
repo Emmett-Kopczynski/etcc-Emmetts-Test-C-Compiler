@@ -18,6 +18,7 @@
  *
  */
 typedef enum {
+    NONE, /* A Typeless Token */
     KEYWORD, /* keywords for the language, like int, void, and return */
     IDENTIFYER, /* ASCII identifiers for variables, functions, and more */
     CONSTANT, /* numeric literals throughout the code */
