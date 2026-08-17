@@ -21,8 +21,11 @@
 #include "token.h"
 #include "../driver/flag_table.h"
 
-int lexer_module(FILE *source, TokenQueue tokqueue, FlagLookupTable flags){
-    return -1;
+int lexer_module(FILE *source, TokenQueue *tokqueue, FlagLookupTable flags){
+    
+    
+
+    return 0;
 }
 
 

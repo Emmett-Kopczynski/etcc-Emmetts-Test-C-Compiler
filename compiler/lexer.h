@@ -24,7 +24,7 @@
  * -
  *
  */
-int lexer_module(FILE *source, TokenQueue tokqueue, FlagLookupTable flags); 
+int lexer_module(FILE *source, TokenQueue *tokqueue, FlagLookupTable flags); 
 
 
 #endif

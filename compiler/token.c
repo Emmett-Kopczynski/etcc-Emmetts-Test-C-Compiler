@@ -220,7 +220,7 @@ int token_queue_print(TokenQueue *queue){
     
     /* goes through every node in the queue */
     while(cur != NULL){
-        printf("%s ", cur->data->info);
+        printf("%d(%s) ", cur->data->type, cur->data->info);
         
         /* makes a newline if info is ;, {, or } */
         if(strcmp(";", cur->data->info) == 0 
