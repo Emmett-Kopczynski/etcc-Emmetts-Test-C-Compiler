@@ -1,5 +1,8 @@
 
 Big Picture ::
+- make the lexer
+- test the lexer
+
 - create the minimal compiler
 - figure out everything that the preprosessor is supposed to do, and make the preprosessor todo list
 
