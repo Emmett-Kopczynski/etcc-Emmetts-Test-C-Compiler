@@ -29,6 +29,7 @@ int lexer_module(FILE *source, TokenQueue *tokenqueue, FlagLookupTable flags){
     /* Setup Variables */
 
     char *line = NULL;
+    int line_num = 0;
     ssize_t bytes_read;
     size_t bytes_stored;
     
@@ -39,7 +40,7 @@ int lexer_module(FILE *source, TokenQueue *tokenqueue, FlagLookupTable flags){
     /* the lexer loop */
     while( (bytes_read = getline( &line, &bytes_stored, source )) != -1 ){
         line_start = 0; /* reset linestart */
-
+        line_num++;
         while(line_start < strlen(line)){
             if(line[line_start] == ' ' || line[line_start] == '\n'){
                 /* NOTE :: keep in mind this will need to be changed when we add 
@@ -53,6 +54,7 @@ int lexer_module(FILE *source, TokenQueue *tokenqueue, FlagLookupTable flags){
                 tokenqueue->enqueue(tokenqueue, get_token_type(pretoken), pretoken);
                 
                 if(tokenqueue->first->data->type == NONE){
+                    fprintf(stderr, "ERROR ON LINE %d IN PREPROCESSED FILE (check source.i) \n", line_num);
                     free(pretoken);
                     free(line);
                     return 1;

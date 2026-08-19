@@ -33,7 +33,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
     /* runs stage 1 of the compiler, the lexer, filling up the tokenqueue */
     err = lexer_module(source, tqueue, flags);
     if(err != 0){
-        printf("LEXER ERROR :: %s is invalid\n", tqueue->first->data->info );
+        fprintf(stderr, "LEXER ERROR :: %s is invalid\n", tqueue->first->data->info );
         fclose(source); /* close the preprocessed file */
         clean_token_queue(tqueue);  /* cleans up the TokenQueue */
         return 1;
