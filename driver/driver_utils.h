@@ -5,6 +5,7 @@
  * on all functions in the driver_utils.c file
  *
  * To Document : 
+ *      - is_source_or_path
  *
  */
 
@@ -30,6 +31,12 @@
  *
  */
 int parse_flags(char *cmd, FlagLookupTable *flags); 
+
+
+/* TODO document
+ *
+ */
+boolean is_source_or_path(char *string);
 
 
 /* preprocess :: runs the gcc preprocessor on our input file (the .c file)

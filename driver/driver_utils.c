@@ -5,6 +5,7 @@
  *      To Implement :
  *
  *      To Test :
+ *          - is_source_or_path
  *          - assemblink
  *  
  *      To Update :
@@ -30,6 +31,7 @@ int parse_flags(char *cmd, FlagLookupTable *flags){
     i = 0;
     
     char buffer[strlen(cmd)]; /* buffer to store flags */
+
     boolean onflag = False;
     memset(buffer, 0, strlen(cmd));
 
@@ -37,7 +39,9 @@ int parse_flags(char *cmd, FlagLookupTable *flags){
         if(cmd[i] == '-' && onflag == False)
             onflag = True;
         else if (cmd[i] == ' ' && onflag == True){
-            flags->put(flags, detect_flag(buffer));
+            if( !is_source_or_path(buffer) )
+                flags->put(flags, detect_flag(buffer));
+            
             if(flags->contains(flags, ERR) ){
                 fprintf(stderr, "ERROR :: Unknown Flag :: %s\n", buffer);
                 return 1;
@@ -56,6 +60,25 @@ int parse_flags(char *cmd, FlagLookupTable *flags){
     return 0;
 } 
 
+
+boolean is_source_or_path(char *string){
+    char cur;
+    char prev;
+    int i;
+    i = cur = prev = 0;
+
+    for(i = 0; i < strlen(string); i ++){
+        cur = string[i];
+
+        if((cur == 'c' && prev == '.' )
+                || cur == '/')
+            return True;
+
+        prev = cur;
+    }
+
+    return False;
+}
 
 
 int preprocess(char *input_file, FlagLookupTable flags){ 
