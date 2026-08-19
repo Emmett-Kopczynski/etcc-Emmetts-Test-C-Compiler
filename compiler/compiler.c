@@ -24,14 +24,22 @@
     
 
 int compile(char *sourcepath, FlagLookupTable flags){      
+    int err = 0; /* if ever not 0, something has gone wrong */
 
     FILE *source = fopen(sourcepath, "r");  /* open the preprocessed file */
     TokenQueue *tqueue = construct_token_queue();  /* constructs the TokenQueue */
 
 
     /* runs stage 1 of the compiler, the lexer, filling up the tokenqueue */
-    lexer_module(source, tqueue, flags);
-    
+    err = lexer_module(source, tqueue, flags);
+    if(err != 0){
+        printf("LEXER ERROR :: %s is invalid\n", tqueue->first->data->info );
+        fclose(source); /* close the preprocessed file */
+        clean_token_queue(tqueue);  /* cleans up the TokenQueue */
+        return 1;
+    }
+        
+
     /* TODO REMOVE THE DEBUG PRINT */
     tqueue->print(tqueue);
 
@@ -43,7 +51,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
     
 
 
-    /* MASS CLEAN UP */
+    /* MASS CLEAN UP */ 
     fclose(source); /* close the preprocessed file */
     clean_token_queue(tqueue);  /* cleans up the TokenQueue */
 

@@ -28,8 +28,8 @@ int main(int argc, char *argv[]){
     
     /* builds the cmd */
     char cmd[BUFFERLEN];
-    int i;
-    i = 0;
+    int i, err; /* i is for loops, is err is not 0, something is wrong */
+    i = err = 0;
 
     for(i = 0; i < BUFFERLEN; i ++)
         cmd[i] = '\0';
@@ -45,27 +45,29 @@ int main(int argc, char *argv[]){
     FlagLookupTable_construct_new(&flagtable);
 
     /* put the used flags in the flag lookup table */
-    if( parse_flags(cmd, &flagtable) != 0)
+    if( (err = parse_flags(cmd, &flagtable)) != 0)
         return 1;
 
     /* find the source file */
     char source[strlen(cmd)];
-    if(get_source(cmd, source) != 0)
-        return 1;
+    if( (err = get_source(cmd, source)) != 0)
+        return err;
     
 
     /* call the preprocessor */
-    if( preprocess(source, flagtable) != 0)
-        return 1;
+    if( (err = preprocess(source, flagtable)) != 0)
+        return err;
 
     /* STOP AFTER PREPROCESSOR IF -P is active */
     if(flagtable.contains(&flagtable, P))
-        return 0;
+        return err;
     
     source[strlen(source) - 1] = 'i';
 
     /* call the compiler */
-    compile(source, flagtable);
+    if( (err = compile(source, flagtable)) != 0){
+        return err;
+    }
     
     /* deletes the preprocessed file */
     /* TODO delete the .i file */
@@ -78,6 +80,6 @@ int main(int argc, char *argv[]){
         /* TODO delete the assembly file */
     }
 
-    return 0;   
+    return err;   
 }
 

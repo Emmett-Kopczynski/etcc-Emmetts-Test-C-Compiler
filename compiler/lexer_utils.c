@@ -2,7 +2,6 @@
  *
  *
  * To Do : 
- *      - add a function to detect valid identifiers
  *
  * To Implement: 
  *
@@ -57,6 +56,72 @@ boolean is_integer(char *string){
     return True;
     
 }
+
+
+boolean valid_identifier(char *string){
+    
+    /* all cases check if the first character is a legal first character */
+    switch(string[0]){
+        
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            return False;
+            break;
+
+        
+        /* default branch checks that all other characters are legal */
+        default:
+            int i;
+            i = 0;
+            for(i = 0; string[i] != '\0' ; i++){
+                /* checks against all illegal characters */
+                if(string[i] == '\\' || 
+                        string[i] == '\'' || 
+                        string[i] == '"' ||
+                        string[i] == ':' || 
+                        string[i] == '!' ||
+                        string[i] == '@' || 
+                        string[i] == '#' ||
+                        string[i] == '$' || 
+                        string[i] == '%' ||  
+                        string[i] == '^' || 
+                        string[i] == '&' ||
+                        string[i] == '*' || 
+                        string[i] == '(' ||
+                        string[i] == ')' || 
+                        string[i] == '-' ||
+                        string[i] == '_' || 
+                        string[i] == '+' ||   
+                        string[i] == '=' || 
+                        string[i] == '{' ||
+                        string[i] == '[' || 
+                        string[i] == '}' ||
+                        string[i] == ']' || 
+                        string[i] == '|' ||
+                        string[i] == ';' || 
+                        string[i] == ',' ||
+                        string[i] == '<' || 
+                        string[i] == '.' ||
+                        string[i] == '>' || 
+                        string[i] == '/' ||    
+                        string[i] == '?' || 
+                        string[i] == '`' ||
+                        string[i] == '~' )
+                    return False;
+            }
+    }
+    
+    /* if we make it here, it is assumed that the identifier is legal */
+    return True;
+} 
 
 
 boolean is_token_break(char next){
@@ -146,9 +211,11 @@ TokenType get_token_type(char *pre_token){
     } else if(is_integer(pre_token)){
         /* for integer constants */
         return CONSTANT;
-    } else{ /* TODO add a valid identifier function */
-        /* if none of the above, it must be an identifier */
+    } else if (valid_identifier(pre_token) ){ 
+        /* if none of the above, and a valid id, then it is an identifier */
         return IDENTIFYER;
+    } else {
+        return NONE;
     }
 
 }

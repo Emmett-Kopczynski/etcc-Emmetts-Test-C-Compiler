@@ -48,11 +48,16 @@ int lexer_module(FILE *source, TokenQueue *tokenqueue, FlagLookupTable flags){
                 continue;
             } else{
                 pretoken = get_pretoken(line, &line_start);
-                /* TODO add an error detection */
-
+                
                 /* add a new token to the queue */
                 tokenqueue->enqueue(tokenqueue, get_token_type(pretoken), pretoken);
                 
+                if(tokenqueue->first->data->type == NONE){
+                    free(pretoken);
+                    free(line);
+                    return 1;
+                }
+
                 /* reset the pretoken */
                 free(pretoken);
                 pretoken = NULL;

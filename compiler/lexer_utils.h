@@ -10,6 +10,7 @@
  *          - get_pretoken
  *          - get_token_type
  *          - is_token_break
+ *          - valid_identifier
  *
  */
 
@@ -37,6 +38,14 @@ boolean is_keyword(char *string);
  *
  */
 boolean is_integer(char *string);
+
+
+/* TODO document valid_identifier
+ *
+ * NOTE :: will mark most keywords as valid
+ *
+ */
+boolean valid_identifier(char *string);
 
 
 /* TODO document is_token_break 
