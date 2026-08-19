@@ -23,8 +23,8 @@
 #include "../driver/flag_table.h"
     
 
-int compile(char *sourcepath, FlagLookupTable flags){   
-    
+int compile(char *sourcepath, FlagLookupTable flags){      
+
     FILE *source = fopen(sourcepath, "r");  /* open the preprocessed file */
     TokenQueue *tqueue = construct_token_queue();  /* constructs the TokenQueue */
 

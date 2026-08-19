@@ -5,10 +5,7 @@
  * To Do :
  *
  *      To Document :
- *          - token_queue_dequeue
- *          - token_queue_size
- *          - token_queue_print
- *
+ *          - print_token();
  */
 
 
@@ -126,6 +123,14 @@ Token * construct_token(TokenType type, char *info);
  *
  */
 int clean_token(Token *to_clean);
+
+/* print_token : prints out the given token without a newline at the end, but with a space
+ *
+ * Arguments :
+ *      - to_print : type Token * : the token we are printing
+ *
+ */
+void print_token(Token *to_print);
 
 
 /* TOKEN FUNCTIONS END */

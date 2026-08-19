@@ -4,9 +4,12 @@
  *  To Do :
  *      
  *      To Implement:
+ *          - print_token
+ *         
  *
  *
  *      To Update : 
+ *          - token_queue_print
  *          - clean_token
  *          - clean_token_node 
  *          - clean_token_queue
@@ -64,6 +67,51 @@ int clean_token(Token *to_clean){
 
     return 0; /* TODO add error codes */
 } 
+
+
+void print_token(Token *to_print){
+    switch(to_print->type){
+        case NONE :
+            printf("NONE( %s ) ", to_print->info);
+            break;
+
+         case KEYWORD :
+            printf("KEYWORD( %s ) ", to_print->info);
+            break;
+
+         case IDENTIFYER :
+            printf("IDENTIFYER( %s ) ", to_print->info);
+            break;
+
+         case CONSTANT :
+            printf("CONSTANT( %s ) ", to_print->info);
+            break;
+
+         case SEMICOLON:
+            printf("SEMICOLON( %s ) ", to_print->info);
+            break;
+
+         case OPEN_BRACE:
+            printf("OPEN_BRACE( %s ) ", to_print->info);
+            break;
+
+         case CLOSE_BRACE:
+            printf("CLOSE_BRACE( %s ) ", to_print->info);
+            break;
+
+         case OPEN_PAR:
+            printf("OPEN_PAR( %s ) ", to_print->info);
+            break;
+
+         case CLOSE_PAR:
+            printf("CLOSE_PAR( %s ) ", to_print->info);
+            break;
+
+         default:
+            printf("\n\nERROR :: TYPLESS TOKEN\n\n");
+            break;
+    }
+}
 
 /* TOKEN FUNCTIONS END */
 
@@ -220,18 +268,19 @@ int token_queue_print(TokenQueue *queue){
     
     /* goes through every node in the queue */
     while(cur != NULL){
-        printf("%d(%s) ", cur->data->type, cur->data->info);
-        
-        /* makes a newline if info is ;, {, or } */
-        if( cur->data->type == SEMICOLON
-                || cur->data->type == OPEN_BRACE
-                || cur->data->type == CLOSE_BRACE) {
+        print_token(cur->data);
+
+        if( cur->data->type == OPEN_BRACE
+                || cur->data->type == CLOSE_BRACE
+                || cur->data->type == SEMICOLON) {
             printf("\n");
         }
-        
+
         /* moves on to the next node */
         cur = cur->prev;
     }
+    
+    printf("\n");
 
     return 0;   
 }

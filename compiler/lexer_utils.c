@@ -2,15 +2,11 @@
  *
  *
  * To Do : 
+ *      - add a function to detect valid identifiers
  *
  * To Implement: 
- *  
+ *
  * To Test :
- *      - get_pretoken
- *      - is_token_break
- *      - is_integer
- *      - get_token_type
- *      - is_keyword
  *
  */
 
@@ -30,15 +26,24 @@
 boolean is_keyword(char *string){
     
     /* if tree to see if it matches a keyword */
-    /* start with the type definitions */
+    
     if( strcmp(string, "void") == 0
             || strcmp(string, "int") == 0){
+        /* type definition keywords 
+         *  - void
+         *  - int
+         */
+        return True;
+    }  else if( strcmp(string, "return") == 0){
+        /* get out of function/loop keywords
+         *  - return 
+         */
         return True;
     } else {
         return False;
     }
 
-} /* TODO test */
+}
 
 
 boolean is_integer(char *string){
@@ -51,7 +56,7 @@ boolean is_integer(char *string){
     }
     return True;
     
-} /* TODO test */
+}
 
 
 boolean is_token_break(char next){
@@ -71,7 +76,7 @@ boolean is_token_break(char next){
             return False;
     }
 
-} /* TODO test */
+}
 
 
 char *get_pretoken(char *line, int *start){
@@ -81,7 +86,7 @@ char *get_pretoken(char *line, int *start){
     int j, i, size, end;
     j = i = size = end = 0;
 
-    for(i = *start; !is_token_break(line[i]) || i >= strlen(line) ; i++){
+    for(i = *start; !is_token_break(line[i]) && i < strlen(line) ; i++){
         size ++;
     }
 
@@ -91,22 +96,23 @@ char *get_pretoken(char *line, int *start){
     }
     
     /* allocate memory for the pretoken */
-    pretoken = (char *) malloc(size * sizeof(char) );
+    pretoken = (char *) malloc(size * sizeof(char) + 1);
       
     /* end is the end index of our pretoken */
     end = size + *start;
 
     /* copy into the pretoken */
-    for(i = *start, j = 0; i <= end; i++, j++){
+    for(i = *start, j = 0; i < end; i++, j++){
         /* j is the index of the pretoken, i is the index of the line */
         pretoken[j] = line[i];
     }
+    pretoken[j] = '\0';
 
     /* re-assigns the start int for our next go through */
     *start += size;
 
     return pretoken;
-} /* TODO test */
+} 
 
 
 TokenType get_token_type(char *pre_token){
@@ -140,12 +146,12 @@ TokenType get_token_type(char *pre_token){
     } else if(is_integer(pre_token)){
         /* for integer constants */
         return CONSTANT;
-    } else{
+    } else{ /* TODO add a valid identifier function */
         /* if none of the above, it must be an identifier */
         return IDENTIFYER;
     }
 
-}  /* TODO test */
+}
 
 
 

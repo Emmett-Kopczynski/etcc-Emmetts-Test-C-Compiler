@@ -30,6 +30,10 @@ int main(int argc, char *argv[]){
     char cmd[BUFFERLEN];
     int i;
     i = 0;
+
+    for(i = 0; i < BUFFERLEN; i ++)
+        cmd[i] = '\0';
+
     for(i = 0; i < argc; i ++){
         strcat(cmd, argv[i]);
         strcat(cmd, " ");
@@ -57,6 +61,8 @@ int main(int argc, char *argv[]){
     /* STOP AFTER PREPROCESSOR IF -P is active */
     if(flagtable.contains(&flagtable, P))
         return 0;
+    
+    source[strlen(source) - 1] = 'i';
 
     /* call the compiler */
     compile(source, flagtable);

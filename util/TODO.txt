@@ -1,0 +1,4 @@
+utils ~ TODO
+
+- add an error.h header with error handling functions
+

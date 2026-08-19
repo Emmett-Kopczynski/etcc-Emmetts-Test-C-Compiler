@@ -15,16 +15,56 @@
 
 /* c standard inclusions */
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /* homemade inclusions */
 #include "lexer.h"
 #include "token.h"
 #include "../driver/flag_table.h"
+#include "lexer_utils.h"
 
-int lexer_module(FILE *source, TokenQueue *tokqueue, FlagLookupTable flags){
+
+int lexer_module(FILE *source, TokenQueue *tokenqueue, FlagLookupTable flags){
+    /* Setup Variables */
+
+    char *line = NULL;
+    ssize_t bytes_read;
+    size_t bytes_stored;
     
-       
+    int line_start;
     
+    char *pretoken = NULL;
+
+    /* the lexer loop */
+    while( (bytes_read = getline( &line, &bytes_stored, source )) != -1 ){
+        line_start = 0; /* reset linestart */
+
+        while(line_start < strlen(line)){
+            if(line[line_start] == ' ' || line[line_start] == '\n'){
+                /* NOTE :: keep in mind this will need to be changed when we add 
+                 * string support */
+                line_start += 1;
+                continue;
+            } else{
+                pretoken = get_pretoken(line, &line_start);
+                /* TODO add an error detection */
+
+                /* add a new token to the queue */
+                tokenqueue->enqueue(tokenqueue, get_token_type(pretoken), pretoken);
+                
+                /* reset the pretoken */
+                free(pretoken);
+                pretoken = NULL;
+
+            }
+        }
+    }
+    
+
+    /* free the line buffer */
+    free(line);
+    line = NULL;
 
     return 0;
 }
