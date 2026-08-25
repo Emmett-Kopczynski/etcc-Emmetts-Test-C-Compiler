@@ -18,7 +18,7 @@
 
 /* homemade inclusions */
 #include "compiler.h"
-#include "lexer.h"
+#include "lexer/lexer.h"
 #include "token.h"
 #include "../driver/flag_table.h"
     

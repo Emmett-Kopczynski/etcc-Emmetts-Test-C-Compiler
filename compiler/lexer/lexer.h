@@ -13,8 +13,8 @@
 #include <stdio.h>
 
 /* homemade inclusions */
-#include "token.h"
-#include "../driver/flag_table.h"
+#include "../token.h"
+#include "../../driver/flag_table.h"
 
 /* TODO document lexer_module
  *

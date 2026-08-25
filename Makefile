@@ -6,7 +6,7 @@ OUT = etcc
 SUTIL = NOTHING YET # util sources
 SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/etcc_driver.c # driver sources
 SCOMP = compiler/compiler.c compiler/token.c # general compiler sources
-SLEX = compiler/lexer.c  compiler/lexer_utils.c  # lexer sources
+SLEX = compiler/lexer/lexer.c  compiler/lexer/lexer_utils.c  # lexer sources
 
 
 #emmett compilers

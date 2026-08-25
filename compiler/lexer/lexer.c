@@ -20,8 +20,8 @@
 
 /* homemade inclusions */
 #include "lexer.h"
-#include "token.h"
-#include "../driver/flag_table.h"
+#include "../token.h"
+#include "../../driver/flag_table.h"
 #include "lexer_utils.h"
 
 

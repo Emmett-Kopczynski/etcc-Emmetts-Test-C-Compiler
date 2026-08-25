@@ -19,8 +19,8 @@
 #include <stdio.h>
 
 /* homemade inclusions */
-#include "token.h"
-#include "../util/boolean.h"
+#include "../token.h"
+#include "../../util/boolean.h"
 
 
 /* TODO document is_keyword
