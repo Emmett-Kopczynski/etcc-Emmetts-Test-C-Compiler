@@ -21,16 +21,16 @@ default: build
 
 #builds everything
 build: 
-	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) -o $(OUT)
+	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) -o bin/$(OUT)
 
 #cleaners
 c: clear
 clear: clean
 clean:
-	rm $(OUT)
+	rm bin/$(OUT)
 
 
 #builds, and pushes the most recent binaries into the local bin so that they can be executed from anywhere
 push: build
-	cp etcc $(PUSHPATH)
+	cp bin/$(OUT) $(PUSHPATH)
 
