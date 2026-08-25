@@ -5,8 +5,10 @@ OUT = etcc
 #source Groups
 SUTIL = NOTHING YET # util sources
 SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/etcc_driver.c # driver sources
-SCOMP = compiler/compiler.c compiler/token.c # general compiler sources
+SCOMP = compiler/compiler.c compiler/token.c  # general compiler sources
 SLEX = compiler/lexer/lexer.c  compiler/lexer/lexer_utils.c  # lexer sources
+SAST = compiler/ast/ast.c # abstract syntax tree sources
+SPAR = compiler/parser/parser.c compiler/parser/parser_utils.c # parser sources
 
 
 #emmett compilers
@@ -21,7 +23,7 @@ default: build
 
 #builds everything
 build: 
-	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) -o bin/$(OUT)
+	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) $(SAST) $(SPAR) -o bin/$(OUT)
 
 #cleaners
 c: clear
