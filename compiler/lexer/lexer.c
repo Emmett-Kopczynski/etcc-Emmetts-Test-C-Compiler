@@ -1,15 +1,9 @@
-/* lexer.c : TODO document
+/* lexer.c : the c file for the lexer module of the compiler, turning the entire program
+ * into a queue of tokens
  *
- * To Do :
- *  
- *      To Implement :
- *          - lexer_module
+ * To Do : DONE
  *
- *      To Test :
- *
- *
- * Known Bugs : 
- *
+ * Known Bugs : NONE 
  *
  */
 

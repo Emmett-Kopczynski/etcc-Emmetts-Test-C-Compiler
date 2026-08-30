@@ -7,9 +7,13 @@
  *      To Document :
  *          - ASTag
  *          - AST
+ *          - Program
+ *          - Function
+ *          - Statement
+ *          - Expression
  *      
  *      To Implement :
- *          - AST
+ *
  */
 
 /* c inclusions */
@@ -93,4 +97,6 @@ typedef struct expression{
         struct conint { Token *con; } conint; /* <exp> ::= <int:Token> */
     } type;
 } Expression;
+
+
 #endif
