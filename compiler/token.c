@@ -4,17 +4,15 @@
  *  To Do :
  *      
  *      To Implement:
- *          - print_token
- *         
  *
  *
  *      To Update : 
- *          - token_queue_print
  *          - clean_token
  *          - clean_token_node 
  *          - clean_token_queue
  *
  *      To Test :
+ *          - tokens_equal
  * 
  * Known Bugs :
  *
@@ -30,7 +28,7 @@
 
 /* homemade inclusions */
 #include "token.h"
-
+#include "../util/boolean.h"
 
 
 
@@ -112,6 +110,18 @@ void print_token(Token *to_print){
             break;
     }
 }
+
+
+boolean tokens_equal(Token *token1, Token *token2){
+    boolean comp = False;
+
+    if(token1->type == token2->type
+            && strcmp(token1->info, token2->info) == 0 ){
+        comp = True;
+    }
+
+    return comp;
+} 
 
 /* TOKEN FUNCTIONS END */
 

@@ -5,9 +5,14 @@
  * To Do :
  *
  *      To Document :
- *          - print_token();
+ *          - tokens_equal
  */
 
+/* c inclusions */
+
+
+/* homemeade inclusions */
+#include "../util/boolean.h"
 
 
 /* TokenType : the different types of token that the Token data 
@@ -124,6 +129,7 @@ Token * construct_token(TokenType type, char *info);
  */
 int clean_token(Token *to_clean);
 
+
 /* print_token : prints out the given token without a newline at the end, but with a space
  *
  * Arguments :
@@ -131,6 +137,12 @@ int clean_token(Token *to_clean);
  *
  */
 void print_token(Token *to_print);
+
+
+/* TODO document 
+ *
+ */
+boolean tokens_equal(Token *token1, Token *token2);
 
 
 /* TOKEN FUNCTIONS END */

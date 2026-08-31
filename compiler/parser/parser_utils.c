@@ -1,8 +1,205 @@
 /* parser_utils.c : TODO document
  *
+ * To Do : 
+ *      
+ *      To Document :
+ *          - parser_utils.c
+ *
+ *      To Implement :
+ *          - ast_printer
+ *          - free_ast
+ *
+ *     To Test :
+ *          - expect
+ *          - parse_program
+ *          - parse_function
+ *          - parse_statement
+ *          - parse_expression
+ *
  */
 
 /* c inclusions */
+#include <stdio.h>
+#include <stdlib.h>
+
 
 /* homemade inclusions */
 #include "parser_utils.h"
+
+
+void ast_printer(AST *ast){
+    switch(ast->node_type){
+        case PROGRAM: /* TODO implement branch */
+
+        case FUNCTION: /* TODO implement branch */
+
+        case STATEMENT: /* TODO implement branch */
+
+        case EXP: /* TODO implement branch */
+
+        default:
+            return; /* TODO implement branch */
+
+    }
+    return;
+} /* TODO implement */
+
+
+boolean expect(Token *expected, TokenQueue *tokens){
+    Token *actual = tokens->dequeue(tokens);
+
+    boolean comp;
+    comp = tokens_equal(actual, expected);
+
+
+    if(comp == False){ /* the token was unexpected */
+        fprintf(stderr, "Syntax Error\n%s was not the expected %s\n", actual->info, expected->info);
+        clean_token(actual); clean_token(expected);
+        return False;
+    } else{
+        clean_token(actual); clean_token(expected);
+        return True;
+    }
+
+} 
+
+
+AST *parse_program(TokenQueue *tokens){
+    AST *prog;
+    prog = (AST *) malloc(sizeof(AST));
+    
+    prog->node_type = PROGRAM;    
+
+    /* we expect a program node to contain a function node, hence the following */
+    prog->node.prog = (Program *) malloc(sizeof(Program));
+    prog->node.prog->type.func.func = parse_function(tokens);
+
+    if(prog->node.prog->type.func.func == NULL){ /* if something failed */
+        free(prog->node.prog);
+        free(prog); 
+        prog = NULL;
+    }
+
+    return prog;
+} 
+
+
+AST *parse_function(TokenQueue *tokens){
+    AST *func;
+    func = (AST *) malloc(sizeof(AST));
+
+    func->node_type = FUNCTION;
+    func->node.func = (Function *) malloc(sizeof(Function));
+
+    /* we expect the function node to have a sieries of tokens, hence the following */
+    if(expect( construct_token(KEYWORD, "int"), tokens) == False){
+        goto error;
+    }
+    
+    /* get the identifier token */
+    func->node.func->type.tempdef.identifier = tokens->dequeue(tokens);
+    if(func->node.func->type.tempdef.identifier->type != IDENTIFYER){
+        goto error;
+    }
+    
+    if( expect( construct_token(OPEN_PAR, "("), tokens) == False || 
+            expect( construct_token(KEYWORD, "void"), tokens) == False ||
+            expect( construct_token(CLOSE_PAR, ")"), tokens) == False ||
+            expect( construct_token(OPEN_BRACE, "{"), tokens) == False)
+    {
+        goto error;
+    }
+    
+    /* get the statement node */
+    func->node.func->type.tempdef.stat = parse_statement(tokens);
+    if(func->node.func->type.tempdef.stat == NULL)
+        goto error;
+
+    if( expect( construct_token(CLOSE_BRACE, "}"), tokens) == False )
+        goto error;
+    
+    return func;
+
+error:
+    if( func->node.func->type.tempdef.identifier != NULL)
+        clean_token(func->node.func->type.tempdef.identifier);
+    
+    free(func->node.func);
+    free(func);
+    return NULL;
+} 
+
+
+AST *parse_statement(TokenQueue *tokens){
+    AST *stat;
+    stat = (AST *) malloc(sizeof(AST));
+
+    stat->node_type = STATEMENT;
+    stat->node.stat = (Statement *) malloc(sizeof(Function));
+
+    if(expect( construct_token(KEYWORD, "return"), tokens) == False)
+        goto error;
+    
+    /* gets the expression */
+    stat->node.stat->type.ret.exp = parse_expression(tokens);
+    if(stat->node.stat->type.ret.exp == NULL)
+        goto error;
+
+    if(expect( construct_token(SEMICOLON, ";"), tokens) == False)
+        goto error;
+    
+    return stat;
+
+error:
+    if(stat->node.stat->type.ret.exp != NULL)
+        free_ast(stat->node.stat->type.ret.exp);     
+
+    free(stat->node.stat);
+    free(stat);
+    stat = NULL;
+    return NULL;
+
+} 
+
+
+AST *parse_expression(TokenQueue *tokens){
+    AST *exp;
+    exp = (AST *) malloc(sizeof(AST));
+
+    exp->node_type = EXP;
+    exp->node.expr = (Expression *) malloc(sizeof(Expression));
+    
+    /* fill in the constant token */
+    exp->node.expr->type.conint.con = tokens->dequeue(tokens);
+    if(exp->node.expr->type.conint.con->type != CONSTANT)
+        goto error;
+
+    return exp;
+
+error:
+    if(exp->node.expr->type.conint.con != NULL)
+        clean_token(exp->node.expr->type.conint.con);
+
+    free(exp->node.expr);
+    free(exp);
+    exp = NULL;
+    return NULL;
+} 
+
+
+int free_ast(AST *to_clean){
+    switch(to_clean->node_type){
+        case PROGRAM: /* TODO implement branch */
+
+        case FUNCTION: /* TODO implement branch */
+
+        case STATEMENT: /* TODO implement branch */
+
+        case EXP: /* TODO implement branch */
+
+        default: /* TODO implement branch */
+            return 1;
+
+    }
+    return 0;
+} /* TODO implement */

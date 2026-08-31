@@ -60,4 +60,10 @@ AST *parse_statement(TokenQueue *tokens);
 AST *parse_expression(TokenQueue *tokens);
 
 
+/* TODO document 
+ *
+ */
+int free_ast(AST *to_clean);
+
+
 #endif
