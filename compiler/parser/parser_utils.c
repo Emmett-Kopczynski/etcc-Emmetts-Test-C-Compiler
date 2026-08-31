@@ -1,14 +1,14 @@
-/* parser_utils.c : TODO document
+/* parser_utils.c : the c file that holds all the main utilities for the parser module,
+ * this file mainly concerns itself with building the abstract syntax tree defined in ast.h
+ * using the parse_NODETYPE functions. Functions for printing and freeing the 
+ * abstract syntax tree can also be found here
  *
  * To Do : 
- *      
- *      To Document :
- *          - parser_utils.c
  *
  *      To Implement :
- *          - free_ast
  *
- *     To Test :
+ *      To Test :
+ *          - free_ast
  *          - ast_printer
  *          - expect
  *          - parse_program

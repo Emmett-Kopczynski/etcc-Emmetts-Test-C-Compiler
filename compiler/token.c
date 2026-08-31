@@ -198,6 +198,9 @@ TokenQueue * construct_token_queue(){
 
 
 int clean_token_queue(TokenQueue *to_clean){
+    if(to_clean == NULL)
+        return 0;
+
     /* loop through entire queue to clean/remove all tokens */
     while(to_clean->size > 0){
         clean_token( token_queue_dequeue(to_clean) );
