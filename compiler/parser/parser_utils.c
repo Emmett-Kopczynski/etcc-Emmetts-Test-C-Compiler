@@ -6,10 +6,10 @@
  *          - parser_utils.c
  *
  *      To Implement :
- *          - ast_printer
  *          - free_ast
  *
  *     To Test :
+ *          - ast_printer
  *          - expect
  *          - parse_program
  *          - parse_function
@@ -29,20 +29,37 @@
 
 void ast_printer(AST *ast){
     switch(ast->node_type){
-        case PROGRAM: /* TODO implement branch */
+        case PROGRAM: 
+            printf("Program(\n");
+            ast_printer(ast->node.prog->type.func.func);
+            printf(")\n");
+            break;
 
-        case FUNCTION: /* TODO implement branch */
+        case FUNCTION:
+            printf("Function(\n");
+            printf("name=\"%s\"\n", ast->node.func->type.tempdef.identifier->info);
+            printf("Body = ");
+            ast_printer(ast->node.func->type.tempdef.stat);
+            printf(")\n");
+            break;
 
-        case STATEMENT: /* TODO implement branch */
 
-        case EXP: /* TODO implement branch */
+        case STATEMENT: 
+            printf("Statement(\nReturn ");
+            ast_printer(ast->node.stat->type.ret.exp);
+            printf(")\n");
+            break;
+
+        case EXP: 
+            printf("Constant(%d)\n", atoi(ast->node.expr->type.conint.con->info)); 
+            break;
 
         default:
-            return; /* TODO implement branch */
+            fprintf(stderr, "ERROR\n");
+            return; 
 
     }
-    return;
-} /* TODO implement */
+}
 
 
 boolean expect(Token *expected, TokenQueue *tokens){
