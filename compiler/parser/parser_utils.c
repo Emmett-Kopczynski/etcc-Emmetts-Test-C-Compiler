@@ -28,6 +28,11 @@
 
 
 void ast_printer(AST *ast){
+    if(ast == NULL){
+        printf("NULL()\n");
+        return;
+    }
+
     switch(ast->node_type){
         case PROGRAM: 
             printf("Program(\n");
@@ -94,7 +99,7 @@ AST *parse_program(TokenQueue *tokens){
     if(prog->node.prog->type.func.func == NULL){ /* if something failed */
         free(prog->node.prog);
         free(prog); 
-        prog = NULL;
+        return NULL;
     }
 
     return prog;
@@ -107,6 +112,8 @@ AST *parse_function(TokenQueue *tokens){
 
     func->node_type = FUNCTION;
     func->node.func = (Function *) malloc(sizeof(Function));
+
+    func->node.func->type.tempdef.identifier = NULL;
 
     /* we expect the function node to have a sieries of tokens, hence the following */
     if(expect( construct_token(KEYWORD, "int"), tokens) == False){
@@ -154,6 +161,8 @@ AST *parse_statement(TokenQueue *tokens){
     stat->node_type = STATEMENT;
     stat->node.stat = (Statement *) malloc(sizeof(Function));
 
+    stat->node.stat->type.ret.exp = NULL;
+
     if(expect( construct_token(KEYWORD, "return"), tokens) == False)
         goto error;
     
@@ -186,6 +195,8 @@ AST *parse_expression(TokenQueue *tokens){
     exp->node_type = EXP;
     exp->node.expr = (Expression *) malloc(sizeof(Expression));
     
+    exp->node.expr->type.conint.con = NULL;
+
     /* fill in the constant token */
     exp->node.expr->type.conint.con = tokens->dequeue(tokens);
     if(exp->node.expr->type.conint.con->type != CONSTANT)
@@ -205,11 +216,11 @@ error:
 
 
 int free_ast(AST *to_clean){
-    switch(to_clean->node_type){
-        case PROGRAM: 
-            if(to_clean == NULL)
+    if(to_clean == NULL)
                 return 0;
 
+    switch(to_clean->node_type){
+        case PROGRAM: 
             free_ast(to_clean->node.prog->type.func.func);
             free(to_clean->node.prog);
             free(to_clean);
@@ -217,9 +228,6 @@ int free_ast(AST *to_clean){
             break;
 
         case FUNCTION: 
-            if(to_clean == NULL)
-                return 0;
-
             free_ast(to_clean->node.func->type.tempdef.stat);
             clean_token(to_clean->node.func->type.tempdef.identifier);
             free(to_clean->node.func);
@@ -228,9 +236,6 @@ int free_ast(AST *to_clean){
             break;
 
         case STATEMENT: 
-            if(to_clean == NULL)
-                return 0;
-
             free_ast(to_clean->node.stat->type.ret.exp);
             free(to_clean->node.stat);
             free(to_clean);
@@ -238,9 +243,6 @@ int free_ast(AST *to_clean){
             break;
 
         case EXP: 
-            if(to_clean == NULL)
-                return 0;
-            
             clean_token(to_clean->node.expr->type.conint.con);
             free(to_clean->node.expr);
             free(to_clean);
