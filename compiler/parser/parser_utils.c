@@ -206,17 +206,50 @@ error:
 
 int free_ast(AST *to_clean){
     switch(to_clean->node_type){
-        case PROGRAM: /* TODO implement branch */
+        case PROGRAM: 
+            if(to_clean == NULL)
+                return 0;
 
-        case FUNCTION: /* TODO implement branch */
+            free_ast(to_clean->node.prog->type.func.func);
+            free(to_clean->node.prog);
+            free(to_clean);
+            to_clean = NULL;
+            break;
 
-        case STATEMENT: /* TODO implement branch */
+        case FUNCTION: 
+            if(to_clean == NULL)
+                return 0;
 
-        case EXP: /* TODO implement branch */
+            free_ast(to_clean->node.func->type.tempdef.stat);
+            clean_token(to_clean->node.func->type.tempdef.identifier);
+            free(to_clean->node.func);
+            free(to_clean);
+            to_clean = NULL;
+            break;
 
-        default: /* TODO implement branch */
+        case STATEMENT: 
+            if(to_clean == NULL)
+                return 0;
+
+            free_ast(to_clean->node.stat->type.ret.exp);
+            free(to_clean->node.stat);
+            free(to_clean);
+            to_clean = NULL;
+            break;
+
+        case EXP: 
+            if(to_clean == NULL)
+                return 0;
+            
+            clean_token(to_clean->node.expr->type.conint.con);
+            free(to_clean->node.expr);
+            free(to_clean);
+            break;
+
+        default: 
+            fprintf(stderr, "ERROR\n");
             return 1;
 
     }
     return 0;
-} /* TODO implement */
+} 
