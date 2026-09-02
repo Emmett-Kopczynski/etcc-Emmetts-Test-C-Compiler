@@ -6,6 +6,7 @@
  *          - codegen.c
  *
  *      - To Implement :
+ *          - codegen_module
  *
  */
 
@@ -17,4 +18,6 @@
 #include "codegen.h"
 
 
-
+int codegen_module(AST *ast, Assembly_AST **ass_ast, FlagLookupTable flagtable){
+    return -1;
+} /* TODO implement */
