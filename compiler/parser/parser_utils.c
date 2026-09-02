@@ -170,7 +170,6 @@ AST *parse_statement(TokenQueue *tokens){
     stat->node.stat->type.ret.exp = parse_expression(tokens);
     if(stat->node.stat->type.ret.exp == NULL)
         goto error;
-
     if(expect( construct_token(SEMICOLON, ";"), tokens) == False)
         goto error;
     
@@ -179,7 +178,7 @@ AST *parse_statement(TokenQueue *tokens){
 error:
     if(stat->node.stat->type.ret.exp != NULL)
         free_ast(stat->node.stat->type.ret.exp);     
-
+    fprintf(stderr, "ERROR :: Something wrong with return statement\n");
     free(stat->node.stat);
     free(stat);
     stat = NULL;
@@ -199,12 +198,14 @@ AST *parse_expression(TokenQueue *tokens){
 
     /* fill in the constant token */
     exp->node.expr->type.conint.con = tokens->dequeue(tokens);
+    if(exp->node.expr->type.conint.con == NULL) goto error;
     if(exp->node.expr->type.conint.con->type != CONSTANT)
         goto error;
 
     return exp;
 
 error:
+    fprintf(stderr, "ERROR :: Nothing returned from main\n");
     if(exp->node.expr->type.conint.con != NULL)
         clean_token(exp->node.expr->type.conint.con);
 

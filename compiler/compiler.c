@@ -56,7 +56,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
     clean_token_queue(tqueue);  /* cleans up the TokenQueue at the end of stage 2 */
     
     /* TODO remove the debug print */
-    ast_printer(ast);
+    //ast_printer(ast);
 
     /* TODO implement stage 3 */
     /* TODO implement stage 4 */
