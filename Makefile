@@ -8,6 +8,7 @@ SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/etcc_driver.c # dri
 SCOMP = compiler/compiler.c compiler/token.c  # general compiler sources
 SLEX = compiler/lexer/lexer.c  compiler/lexer/lexer_utils.c  # lexer sources
 SPAR = compiler/parser/parser.c compiler/parser/parser_utils.c # parser sources
+SGEN = compiler/codegen/codegen.c compiler/codegen/codegen_utils.c #codegen sources
 
 
 #emmett compilers
@@ -22,7 +23,7 @@ default: build
 
 #builds everything
 build: 
-	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) $(SAST) $(SPAR) -o bin/$(OUT)
+	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) $(SAST) $(SPAR) $(SGEN) -o bin/$(OUT)
 
 #cleaners
 c: clear
