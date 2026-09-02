@@ -25,12 +25,13 @@
 /* c inclusions */
 
 /* homemade inclusions */
+#include "../token.h"
 
 /* foreward declarations for the nodes */
 typedef struct a_program A_Program;
 typedef struct a_function A_Function;
 typedef struct a_instruction A_Instruction;
-typedef struct a_expression A_Expression;
+typedef struct a_operand A_Operand;
 
 
 /* TODO document 
@@ -40,7 +41,7 @@ typedef enum {
     A_PROGRAM, /* TODO document */
     A_FUNCTION, /* TODO document */
     A_STATEMENT, /* TODO document */
-    A_EXP /* TODO document */
+    A_OPERAND /* TODO document */
 } A_ASTag; 
 
 
@@ -54,9 +55,9 @@ typedef struct assembly_ast{
         A_Program *aprog;
         A_Function *afunc;
         A_Instruction *ainst;
-        A_Expression *aexpr;
+        A_Operand *aoper;
     } node;
-} Assembly_AST; /* TODO implement */
+} Assembly_AST;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,26 +69,44 @@ typedef struct assembly_ast{
  *
  */
 typedef struct a_program {
-} A_Program; /* TODO implement */
+    union{
+        struct afunc { Assembly_AST *afunc; } afunc; 
+    } type;
+} A_Program;
 
 
 /* TODO document
  *
  */
 typedef struct a_function {
-} A_Function; /* TODO implement */
+    union{
+        struct a_tempdef { Token *identifier; Assembly_AST **a_inst; } a_tempdef; 
+    } type;
+} A_Function;
 
 /* TODO document 
  *
  */
 typedef struct a_instruction {
-} A_Instruction; /* TODO implement */
+    enum {
+        MOV,
+        RET
+    } Instruct_Type; 
+
+    union{
+        struct a_mov { Assembly_AST *exp_op; } a_mov; /* the register for mov is %eax */
+        struct a_ret { } a_ret;
+    } type;
+} A_Instruction;
 
 
 /* TODO document 
  *
  */
-typedef struct a_expression{
-} A_Expression; /* TODO implement */
+typedef struct a_operand{
+    union{
+        struct conint { Token *con; } conint;
+    } type;
+} A_Operand; 
 
 #endif
