@@ -37,7 +37,12 @@ int compile(char *sourcepath, FlagLookupTable flags){
         goto error;
     }
     
-    /* TODO implement the --lex flag here */    
+    /* checks if the --lex flag was used, if so, stop now */
+    if(flags.contains(&flags, LEX)){
+        clean_token_queue(tqueue);
+        fclose(source);
+        return 0;
+    }
 
     /* TODO REMOVE THE DEBUG PRINT */
     //tqueue->print(tqueue);
