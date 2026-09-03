@@ -40,7 +40,7 @@ typedef struct a_operand A_Operand;
 typedef enum {
     A_PROGRAM, /* TODO document */
     A_FUNCTION, /* TODO document */
-    A_STATEMENT, /* TODO document */
+    A_INSTRUCTION, /* TODO document */
     A_OPERAND /* TODO document */
 } A_ASTag; 
 
@@ -95,7 +95,6 @@ typedef struct a_instruction {
 
     union{
         struct a_mov { Assembly_AST *exp_op; } a_mov; /* the register for mov is %eax */
-        struct a_ret { } a_ret;
     } type;
 } A_Instruction;
 

@@ -6,7 +6,6 @@
  *      
  *      To Document :
  *          - codegen_utils.h
- *          - assembly_ast_printer
  *          - gen_program
  *          - gen_function
  *          - gen_instructions
@@ -24,10 +23,9 @@
 #include "../../util/boolean.h"
 
 
-/* TODO document
- *
- */
-void assembly_ast_printer(Assembly_AST *assembly_ast);
+/* symbolic constants */
+#define INSTCOUNT 2 /* a temporary constant for this verison, describes
+                       the amount of instructions to return from gen_instructions */
 
 
 /* TODO document
