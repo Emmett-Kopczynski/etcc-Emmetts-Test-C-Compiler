@@ -33,7 +33,7 @@ void assembly_ast_printer(Assembly_AST *assembly_ast);
 /* TODO document
  *
  */
-Assembly_AST *gen_program(Assembly_AST *assembly_ast, AST *ast);
+Assembly_AST *gen_program(AST *ast);
 
 
 /* TODO document
