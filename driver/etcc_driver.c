@@ -70,12 +70,12 @@ int main(int argc, char *argv[]){
     }
     
     /* deletes the preprocessed file */
-    /* TODO delete the .i file */
-        
+    
     
     if(flagtable.contains(&flagtable, S) == False){
         /* link and assemble */
-        // TODO implement the gcc assembler/linker
+        source[strlen(source) - 1] = 's';
+        assemblink(source, flagtable);
     
         /* TODO delete the assembly file */
     }
