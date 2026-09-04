@@ -15,6 +15,8 @@
 
 /* c standard inclusions */
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 /* homemade inclusions */
 #include "compiler.h"
@@ -30,6 +32,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
     int err = 0; /* if ever not 0, something has gone wrong */
 
     FILE *source = fopen(sourcepath, "r");  /* open the preprocessed file */
+    char *sourcepath_cpy = (char *)malloc(sizeof(char) * (strlen(sourcepath) + 1)); /* makes copy of sourcepath */
     TokenQueue *tqueue = construct_token_queue();  /* constructs the TokenQueue */
     AST *ast = NULL; /* declares the abstract sytnax tree */
     Assembly_AST *ass_ast = NULL; /* declares the assembly abstract syntax tree */
@@ -68,13 +71,16 @@ int compile(char *sourcepath, FlagLookupTable flags){
         fprintf(stderr, "CODEGEN ERROR\n");
         goto error;
     }
-
+    
+    
     /* runs stage four, emitting the assembly abstract sytnax tree to a file, generating assembly code */
-    err = emission_module(sourcepath, ass_ast, flags);
+    strcpy(sourcepath_cpy, sourcepath);
+    err = emission_module(sourcepath_cpy, ass_ast, flags);
     if(err != 0) {
         fprintf(stderr, "EMISSION ERROR\n");
         goto error;
     }
+    free(sourcepath_cpy);
 
     /* MASS CLEAN UP */ 
     fclose(source); /* close the preprocessed file */
@@ -88,6 +94,7 @@ error:
     clean_token_queue(tqueue);  
     free_ast(ast); 
     free_assembly_ast(ass_ast); 
+    free(sourcepath_cpy);
     return 1;
 } /* TODO implement */
 

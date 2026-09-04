@@ -5,9 +5,7 @@
  *      To Implement :
  *
  *      To Test :
- *          - is_source_or_path
- *          - assemblink
- *  
+ *            
  *      To Update :
  *
  *
@@ -134,8 +132,10 @@ int assemblink(char *input_file, FlagLookupTable flags){
     strcat(fcmd, input_file); /* writes the input file into fcmd */
     strcat(fcmd, mcmd); /* writes the middle -o into the fcmd */
     strcat(fcmd, input_file);
-
-    fcmd[strlen(fcmd) - 1] = 'o';
+    
+    /* shaves off the last 2 characters */
+    fcmd[strlen(fcmd) - 1] = '\0';
+    fcmd[strlen(fcmd) - 1] = '\0';
 
     /* should call gcc ASSEMBLY_FILE.s -o OUTPUT_FILE.o */
     ret = system(fcmd); /* gives ret the exit number of the system call */
@@ -147,6 +147,25 @@ int assemblink(char *input_file, FlagLookupTable flags){
     return ret;
 }
 
+
+int delete_file(char *input_file){
+    char *fcmd; /* command we are to call */
+    char *scmd = "rm "; /* start of command we are to call */
+    
+    fcmd = (char *) malloc(sizeof(char) * (strlen(input_file) + strlen(scmd) + 1));
+    
+    /* BUILD fcmd */
+    strcpy(fcmd, scmd);
+    strcat(fcmd, input_file);
+
+    int ret; ret = 0;
+    system(fcmd);
+
+    free(fcmd);
+    fcmd = NULL;
+
+    return ret;
+} 
 
 
 int get_source(char *cmd, char *source){
@@ -185,12 +204,5 @@ int get_source(char *cmd, char *source){
 
     return 0;
 } 
-
-
-
-
-
-
-
 
 

@@ -69,15 +69,15 @@ int main(int argc, char *argv[]){
         return err;
     }
     
-    /* deletes the preprocessed file */
+    delete_file(source);
     
     
     if(flagtable.contains(&flagtable, S) == False){
         /* link and assemble */
         source[strlen(source) - 1] = 's';
         assemblink(source, flagtable);
-    
-        /* TODO delete the assembly file */
+        
+        delete_file(source);
     }
 
     return err;   

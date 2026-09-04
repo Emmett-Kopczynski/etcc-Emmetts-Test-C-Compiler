@@ -6,6 +6,8 @@
  *
  * To Document : 
  *      - is_source_or_path
+ *      - delete_preprocess
+ *      - delete_assembly
  *
  */
 
@@ -64,6 +66,12 @@ int preprocess(char *input_file, FlagLookupTable flags);
 int assemblink(char *input_file, FlagLookupTable flags); 
 
 
+/* TODO document 
+ *
+ */
+int delete_file(char *input_file);
+
+
 /* get_source : extracts the source file from the command line arguments, and 
  * places it in the given source variable
  *
@@ -76,5 +84,6 @@ int assemblink(char *input_file, FlagLookupTable flags);
  *
  */
 int get_source(char *cmd, char *source);
+
 
 #endif
