@@ -17,7 +17,7 @@
 #include "emission.h"
 
 
-int emission_module(FILE *source, Assembly_AST *ass_ast, FlagLookupTable flag_table){
+int emission_module(char *sourcepath, Assembly_AST *ass_ast, FlagLookupTable flag_table){
     return -1;
 }
 
