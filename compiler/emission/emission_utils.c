@@ -6,11 +6,11 @@
  *          - emmision_utils.c
  *
  *      To Implement :
- *          - emit_instruction
  *      
  *      To Test :
  *          - emit_program
  *          - emit_function
+ *          - emit_instruction
  *          
  */
 
@@ -66,7 +66,7 @@ int emit_instruction(FILE *assembly_source, Assembly_AST *ass_ast){
             A_Operand *op = ass_ast->node.ainst->type.a_mov.exp_op->node.aoper;
 
             /* NOTE register %eax is hardcoded here, in future versions this will NOT be the case */
-            fprintf(assembly_source, "\tmovl %s, %%eax\n", op->type.conint.con->info);
+            fprintf(assembly_source, "\tmovl $%s, %%eax\n", op->type.conint.con->info);
             break;
 
         case RET:
@@ -80,7 +80,7 @@ int emit_instruction(FILE *assembly_source, Assembly_AST *ass_ast){
 error:
     fprintf(stderr, "ERROR EMITING INSTRUCTION\n");
     return 1;
-} /* TODO implement */
+} /* TODO test */
 
 
 

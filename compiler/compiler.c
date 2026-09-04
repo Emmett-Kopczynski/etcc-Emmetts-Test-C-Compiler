@@ -24,6 +24,7 @@
 #include "parser/parser.h"    
 #include "codegen/codegen.h"
 #include "codegen/codegen_utils.h"
+#include "emission/emission.h"
 
 int compile(char *sourcepath, FlagLookupTable flags){      
     int err = 0; /* if ever not 0, something has gone wrong */
@@ -60,16 +61,20 @@ int compile(char *sourcepath, FlagLookupTable flags){
     
     /* TODO remove the debug print */
     //ast_printer(ast);
-
+    
+    /* runs stage 3 of the compiler, generating the assembly abstract syntax tree from the abstract syntax tree */
     err = codegen_module(ast, &ass_ast, flags);
     if(err != 0){
         fprintf(stderr, "CODEGEN ERROR\n");
         goto error;
     }
 
-    /* TODO implement stage 4 */
-    
-
+    /* runs stage four, emitting the assembly abstract sytnax tree to a file, generating assembly code */
+    err = emission_module(sourcepath, ass_ast, flags);
+    if(err != 0) {
+        fprintf(stderr, "EMISSION ERROR\n");
+        goto error;
+    }
 
     /* MASS CLEAN UP */ 
     fclose(source); /* close the preprocessed file */
