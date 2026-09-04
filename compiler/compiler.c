@@ -22,6 +22,8 @@
 #include "token.h"
 #include "../driver/flag_table.h"
 #include "parser/parser.h"    
+#include "codegen/codegen.h"
+#include "codegen/codegen_utils.h"
 
 int compile(char *sourcepath, FlagLookupTable flags){      
     int err = 0; /* if ever not 0, something has gone wrong */
@@ -29,6 +31,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
     FILE *source = fopen(sourcepath, "r");  /* open the preprocessed file */
     TokenQueue *tqueue = construct_token_queue();  /* constructs the TokenQueue */
     AST *ast = NULL; /* declares the abstract sytnax tree */
+    Assembly_AST *ass_ast = NULL; /* declares the assembly abstract syntax tree */
 
     /* runs stage 1 of the compiler, the lexer, filling up the tokenqueue */
     err = lexer_module(source, tqueue, flags);
@@ -58,7 +61,12 @@ int compile(char *sourcepath, FlagLookupTable flags){
     /* TODO remove the debug print */
     //ast_printer(ast);
 
-    /* TODO implement stage 3 */
+    err = codegen_module(ast, &ass_ast, flags);
+    if(err != 0){
+        fprintf(stderr, "CODEGEN ERROR\n");
+        goto error;
+    }
+
     /* TODO implement stage 4 */
     
 
@@ -66,13 +74,15 @@ int compile(char *sourcepath, FlagLookupTable flags){
     /* MASS CLEAN UP */ 
     fclose(source); /* close the preprocessed file */
     free_ast(ast); /* frees up the abstract syntax tree */
+    free_assembly_ast(ass_ast);   
 
     return 0;
 
 error:
-    fclose(source); /* close the preprocessed file */
-    clean_token_queue(tqueue);  /* cleans up the TokenQueue */
-    free_ast(ast); /* cleans up the ast */
+    fclose(source);
+    clean_token_queue(tqueue);  
+    free_ast(ast); 
+    free_assembly_ast(ass_ast); 
     return 1;
 } /* TODO implement */
 

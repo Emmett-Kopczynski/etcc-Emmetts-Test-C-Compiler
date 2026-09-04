@@ -6,13 +6,13 @@
  *          - codegen_utils.c
  *
  *      To Implement :
- *          - free_assembly_ast
  *
  *      To Test :
  *          - gen_program
  *          - gen_function
  *          - gen_instructions
  *          - gen_operand
+ *          - free_assembly_ast
  *
  */
 
@@ -30,21 +30,20 @@ Assembly_AST *gen_program(AST *ast){
     
     /* declares and assigns memory to the assembly ast */
     Assembly_AST *assembly_ast;
-    assembly_ast = (Assembly_AST *) malloc(sizeof(Assembly_AST));
-    
-    if(ast->node_type != PROGRAM) goto error;  /* double checks ast */
+    assembly_ast = (Assembly_AST *) malloc(sizeof(Assembly_AST));  
     
     assembly_ast->node_type = A_PROGRAM; /* set nodetype */
 
     assembly_ast->node.aprog = (A_Program *) malloc(sizeof(A_Program));
 
+    if(ast->node_type != PROGRAM) goto error;  /* double checks ast */
+    
     /* gets the function node */
     assembly_ast->node.aprog->type.afunc.afunc = gen_function(ast->node.prog->type.func.func);
     if(assembly_ast->node.aprog->type.afunc.afunc == NULL) goto error;
 
     return assembly_ast;
 error:
-    fprintf(stderr, "Something Went Seriously Wrong With Codegen\n");
     free_assembly_ast(assembly_ast);
     return NULL;
 } /* TODO test */
@@ -63,7 +62,7 @@ Assembly_AST *gen_function(AST *ast){
     if(ast->node_type != FUNCTION) goto error; /* double checks ast */
     
     /* gets the identifier token */
-    assembly_ast->node.afunc->type.a_tempdef.identifier = ast->node.func->type.tempdef.identifier;
+    assembly_ast->node.afunc->type.a_tempdef.identifier = token_clone(ast->node.func->type.tempdef.identifier);
     
     /* gets the instructions */
     assembly_ast->node.afunc->type.a_tempdef.a_inst = gen_instructions(ast->node.func->type.tempdef.stat);
@@ -119,7 +118,8 @@ Assembly_AST *gen_operand(AST *ast){
     
     if(ast->node_type != EXP) goto error;    
 
-    assembly_ast->node.aoper->type.conint.con = ast->node.expr->type.conint.con;
+    /* get the constant token */
+    assembly_ast->node.aoper->type.conint.con = token_clone(ast->node.expr->type.conint.con);
     if(assembly_ast->node.aoper->type.conint.con == NULL) goto error;
 
     return assembly_ast;
@@ -135,17 +135,40 @@ int free_assembly_ast(Assembly_AST *assembly_ast){
 
     switch(assembly_ast->node_type){
         case A_PROGRAM:
-            break; /* TODO implement branch */
+            free_assembly_ast(assembly_ast->node.aprog->type.afunc.afunc);
+            free(assembly_ast->node.aprog);
+            free(assembly_ast);
+            break;
 
         case A_FUNCTION:
-            break; /* TODO implement branch */
+            int i; i = 0;
+            for(i = 0; i < INSTCOUNT; i++)
+                free_assembly_ast(assembly_ast->node.afunc->type.a_tempdef.a_inst[i]);
+           
+            if(assembly_ast->node.afunc->type.a_tempdef.identifier != NULL)
+                clean_token(assembly_ast->node.afunc->type.a_tempdef.identifier);
+
+            free(assembly_ast->node.afunc->type.a_tempdef.a_inst);
+            free(assembly_ast->node.afunc);
+            free(assembly_ast);
+            break; 
 
         case A_INSTRUCTION:
-            break; /* TODO implement branch */
+            if(assembly_ast->node.ainst->Instruct_Type == MOV){
+                free_assembly_ast(assembly_ast->node.ainst->type.a_mov.exp_op);
+            }
+            free(assembly_ast->node.ainst);
+            free(assembly_ast);
+            break; 
 
         case A_OPERAND:
-            break; /* TODO implement branch */
+            if(assembly_ast->node.aoper->type.conint.con != NULL)
+                clean_token(assembly_ast->node.aoper->type.conint.con);
+            
+            free(assembly_ast->node.aoper);
+            free(assembly_ast);
+            break; 
     }
     return 0;
-} /* TODO implement */
+} /* TODO test */
 

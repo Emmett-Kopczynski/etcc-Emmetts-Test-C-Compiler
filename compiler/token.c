@@ -67,6 +67,17 @@ int clean_token(Token *to_clean){
 } 
 
 
+Token * token_clone(Token *to_clone){
+    if(to_clone == NULL) return NULL;
+
+    Token *clone;
+
+    clone = construct_token(to_clone->type, to_clone->info);
+
+    return clone;
+}
+
+
 void print_token(Token *to_print){
     switch(to_print->type){
         case NONE :

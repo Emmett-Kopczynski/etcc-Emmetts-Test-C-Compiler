@@ -5,6 +5,7 @@
  * To Do :
  *
  *      To Document :
+ *          - token_clone
  *          - tokens_equal
  */
 
@@ -128,6 +129,12 @@ Token * construct_token(TokenType type, char *info);
  *
  */
 int clean_token(Token *to_clean);
+
+
+/* TODO document
+ *
+ */
+Token * token_clone(Token *to_clone);
 
 
 /* print_token : prints out the given token without a newline at the end, but with a space
