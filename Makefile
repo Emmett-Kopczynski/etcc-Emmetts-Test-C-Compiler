@@ -9,6 +9,7 @@ SCOMP = compiler/compiler.c compiler/token.c  # general compiler sources
 SLEX = compiler/lexer/lexer.c  compiler/lexer/lexer_utils.c  # lexer sources
 SPAR = compiler/parser/parser.c compiler/parser/parser_utils.c # parser sources
 SGEN = compiler/codegen/codegen.c compiler/codegen/codegen_utils.c #codegen sources
+SEMI = compiler/emission/emission.c compiler/emission/emission_utils.c #emission sources
 
 
 #emmett compilers
@@ -23,7 +24,7 @@ default: build
 
 #builds everything
 build: 
-	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) $(SAST) $(SPAR) $(SGEN) -o bin/$(OUT)
+	$(CC) $(CFLAGS) $(SDRIVER) $(SCOMP) $(SLEX) $(SAST) $(SPAR) $(SGEN) $(SEMI) -o bin/$(OUT)
 
 #cleaners
 c: clear
