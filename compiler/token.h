@@ -4,9 +4,6 @@
  *
  * To Do :
  *
- *      To Document :
- *          - token_clone
- *          - tokens_equal
  */
 
 /* c inclusions */
@@ -131,7 +128,13 @@ Token * construct_token(TokenType type, char *info);
 int clean_token(Token *to_clean);
 
 
-/* TODO document
+/* token_clone : returns a copy of the given token
+ *
+ * Arguments : 
+ *      - to_clone : type Token * : the Token we are cloning
+ *
+ * Returns :
+ *      - a Token pointer with the exact same contents as the given token
  *
  */
 Token * token_clone(Token *to_clone);
@@ -146,7 +149,14 @@ Token * token_clone(Token *to_clone);
 void print_token(Token *to_print);
 
 
-/* TODO document 
+/* tokens_equal : indicates whether the two tokens are equal or not
+ *
+ * Arguments :
+ *      - token1 : type Token * : the token we are checking against token 2
+ *      - token2 : type Token * : the token we are checking against token 1
+ *  
+ * Returns :
+ *      - True if the tokens are equal, otherwise False
  *
  */
 boolean tokens_equal(Token *token1, Token *token2);

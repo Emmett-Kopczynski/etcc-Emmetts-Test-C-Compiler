@@ -1,13 +1,7 @@
 /* driver_utils.c :: the c file for the driver utilitiy functions
  *
  *
- * To Do ::
- *      To Implement :
- *
- *      To Test :
- *            
- *      To Update :
- *
+ * To Do :
  *
  * Known Bugs :
  *

@@ -5,8 +5,6 @@
  *
  * To Do : 
  *
- *      To Document :
- *
  */
 
 /* homemade inclusions */

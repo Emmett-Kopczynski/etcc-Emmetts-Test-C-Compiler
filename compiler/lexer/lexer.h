@@ -5,6 +5,7 @@
  * To Do :
  *
  *      To Document :
+ *          - lexer.h 
  *          - lexer_module
  *
  */
@@ -16,6 +17,7 @@
 /* homemade inclusions */
 #include "../token.h"
 #include "../../driver/flag_table.h"
+
 
 /* TODO document lexer_module
  *

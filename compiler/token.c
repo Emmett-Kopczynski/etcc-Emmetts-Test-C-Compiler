@@ -3,20 +3,7 @@
  *  
  *  To Do :
  *      
- *      To Implement:
- *
- *
- *      To Update : 
- *          - clean_token
- *          - clean_token_node 
- *          - clean_token_queue
- *
- *      To Test :
- *          - tokens_equal
- * 
  * Known Bugs :
- *
- *
  *
  */
 
@@ -63,7 +50,7 @@ int clean_token(Token *to_clean){
     free(to_clean);
     to_clean = NULL;
 
-    return 0; /* TODO add error codes */
+    return 0; 
 } 
 
 
@@ -174,7 +161,7 @@ int clean_token_node(TokenNode *to_clean){
     free(to_clean);
     to_clean = NULL;
 
-    return 0; /* TODO add error codes */
+    return 0; 
 } 
 
 /* TOKEN NODE FUNCTIONS END */
@@ -226,7 +213,7 @@ int clean_token_queue(TokenQueue *to_clean){
     free(to_clean);
     to_clean = NULL;
 
-    return 0; /* TODO add error codes */
+    return 0; 
 } 
 
 

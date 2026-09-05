@@ -2,11 +2,6 @@
  * the functions to work with and construct the FlagLookupTable are implemented here
  * 
  * To Do :
- *      To Implement :
- *
- *      To Test :
- *
- *      To Update : 
  *
  * Known Bugs :
  *

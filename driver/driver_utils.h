@@ -4,12 +4,10 @@
  * file, this file contains function headers and detailed docs
  * on all functions in the driver_utils.c file
  *
- * To Document : 
- *      - is_source_or_path
- *      - delete_preprocess
- *      - delete_assembly
+ * To Do : 
  *
  */
+
 
 /* inclusions from c standart */
 #include <stdio.h>
@@ -17,7 +15,6 @@
 /* homemade inclusions */
 #include "../util/boolean.h"
 #include "flag_table.h"
-
 
 
 /* parse_flags : parses the flags from the given command
@@ -35,7 +32,14 @@
 int parse_flags(char *cmd, FlagLookupTable *flags); 
 
 
-/* TODO document
+/* is_source_or_path : returns true if the given string is a source file (*.c) or
+ * a filepath
+ *
+ * Argument :
+ *      - string : type char * : the string we are checking if it is a source/filepath
+ *
+ *  Returns :
+ *      - true if the given string is a source or filepath, otherwise returns false
  *
  */
 boolean is_source_or_path(char *string);
@@ -66,7 +70,13 @@ int preprocess(char *input_file, FlagLookupTable flags);
 int assemblink(char *input_file, FlagLookupTable flags); 
 
 
-/* TODO document 
+/* delete_file : deletes the given file
+ *
+ * Arguments :
+ *      - input_file : type char * : the file to be deleted
+ *
+ * Returns :
+ *      - the return value of the system command (rm <input_file>), so 0 if everything went well
  *
  */
 int delete_file(char *input_file);

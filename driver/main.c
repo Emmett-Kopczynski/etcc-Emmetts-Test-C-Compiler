@@ -1,14 +1,13 @@
-/* etcc_driver c file :: a main file for running The Compiler Driver for the etcc compiler
+/* main.c :: a main file for running The Compiler Driver for the etcc compiler
  *
  * What a Compiler Driver Does :: A compiler driver does  quite a few things, it parses command line operations that are passed to the compiler, 
  * it runs the preprocessor, it runs the compiler itself, it assembles the assembly file, and then it runs the linker
  * 
  * 
  * To Do :
- * - Implement the running of the etcc compiler
  * 
  * Known Bugs : 
- *      - possibility of error on the build cmd on the strcat cmd, argv[i] line due to a "conditional jump that depends on unititialized values" 
+ *
  */
 
 /* symbolic constants */

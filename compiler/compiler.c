@@ -1,15 +1,9 @@
 /* compiler.c : the .c file that runs the compilation steps for the main compiler
  *
  * To Do : 
+ *      - Implement all flags 
  *      
- *      To Implement :
- *          - compile
- *
- *      To Test :
- *
- *
  * Known Bugs :
- *
  *
  */
 
@@ -51,9 +45,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
         return 0;
     }
 
-    /* TODO REMOVE THE DEBUG PRINT */
-    //tqueue->print(tqueue);
-    
+
     /* runs stage 2 of the compiler, the parser building the abstract syntax tree */
     err = parser_module(tqueue, &ast, flags);
     if(err != 0){
@@ -62,9 +54,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
     }
     clean_token_queue(tqueue);  /* cleans up the TokenQueue at the end of stage 2 */
     
-    /* TODO remove the debug print */
-    //ast_printer(ast);
-    
+
     /* runs stage 3 of the compiler, generating the assembly abstract syntax tree from the abstract syntax tree */
     err = codegen_module(ast, &ass_ast, flags);
     if(err != 0){
@@ -72,7 +62,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
         goto error;
     }
     
-    
+
     /* runs stage four, emitting the assembly abstract sytnax tree to a file, generating assembly code */
     strcpy(sourcepath_cpy, sourcepath);
     err = emission_module(sourcepath_cpy, ass_ast, flags);
@@ -96,5 +86,5 @@ error:
     free_assembly_ast(ass_ast); 
     free(sourcepath_cpy);
     return 1;
-} /* TODO implement */
+}
 
