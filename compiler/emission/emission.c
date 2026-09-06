@@ -1,13 +1,8 @@
-/* emission.c : TODO document
+/* emission.c : the main c file for the emission module of the compiler
  *  
  *  To Do :
  *
- *      To Document :
- *          - emission.c
- *
- *      To Test :
- *          - emission_module
- *    
+ *  Known Bugs : 
  */
 
 /* c inclusions */
@@ -39,5 +34,5 @@ int emission_module(char *sourcepath, Assembly_AST *ass_ast, FlagLookupTable fla
 error:
     if(assembly_src != NULL) fclose(assembly_src);
     return 1;
-} /* TODO test */
+} 
 
