@@ -1,11 +1,9 @@
-/* lexer_utils.c : TODO document
+/* lexer_utils.c :  a .c file that contains utility files for the lexer module of the compiler
  *
  *
  * To Do : 
  *
- * To Implement: 
- *
- * To Test :
+ * Known Bugs :
  *
  */
 

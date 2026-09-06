@@ -1,9 +1,9 @@
 /* lexer.c : the c file for the lexer module of the compiler, turning the entire program
  * into a queue of tokens
  *
- * To Do : DONE
+ * To Do :
  *
- * Known Bugs : NONE 
+ * Known Bugs : 
  *
  */
 
