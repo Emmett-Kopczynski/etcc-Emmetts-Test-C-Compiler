@@ -1,12 +1,9 @@
-/* parser.c : TODO document 
+/* parser.c : the main c file for the parser module of the compiler
  *
  *  To Do :
- *      
- *      To Document :
- *          - parser.c
+ *  
+ *  Known Bugs :
  *
- *      To Test :
- *          - parser_module
  */
 
 /* c inclusions */
