@@ -1,11 +1,13 @@
 #ifndef BOOLEAN_H_
 #define BOOLEAN_H_
-/* boolean.h : TODO document 
+/* boolean.h : header document for boolean
+ * and all related functions
  *
  */
 
 
-/* boolean : TODO document
+/* boolean : a simple enum to denote False (0) or True (1) 
+ * in a boolean expression
  *
  */
 typedef enum{

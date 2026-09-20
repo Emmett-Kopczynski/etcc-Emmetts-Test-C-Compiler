@@ -53,7 +53,7 @@ int compile(char *sourcepath, FlagLookupTable flags){
         goto error;
     }
     clean_token_queue(tqueue);  /* cleans up the TokenQueue at the end of stage 2 */
-    
+      
 
     /* runs stage 3 of the compiler, generating the assembly abstract syntax tree from the abstract syntax tree */
     err = codegen_module(ast, &ass_ast, flags);
