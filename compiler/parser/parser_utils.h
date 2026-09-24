@@ -1,11 +1,12 @@
 #ifndef PARSER_UTILS_H_
 #define PARSER_UTILS_H_
-/* parser_utils.h : TODO document 
+/* parser_utils.h : the header file that defines
+ * all the utility functions for the Abstract 
+ * Syntax Tree (AST) and for parsing
  *
  * To Do : 
  *
  *      To Document :
- *          - parser_utils.h
  *          - ast_printer
  *          - expect
  *          - parse_program

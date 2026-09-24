@@ -1,6 +1,8 @@
 #ifndef AST_H_
 #define AST_H_
-/* ast.h : TODO document 
+/* ast.h : the header file for the definition of the
+ * Abstract Syntax Tree primarily used by the parser module 
+ * of the compiler
  *
  * To Do :
  *      
@@ -27,7 +29,8 @@ typedef struct function Function;
 typedef struct statement Statement;
 typedef struct expression Expression;
 
-/* TODO document 
+/* ASTag : the tag used in the AST data
+ * structure to indicate the type of AST node
  *
  */
 typedef enum {
@@ -66,7 +69,7 @@ typedef struct program{
     union {
         struct func { AST *func; } func; /* <program> ::= <function> */
     } type;
-} Program; /* TODO implement */
+} Program; 
 
 
 /* TODO document
@@ -76,7 +79,7 @@ typedef struct function{
     union {
         struct tempdef { Token *identifier; AST *stat; } tempdef; /* <function> ::= "int" <identifier:Token> "(" "void" ")" "{" <statement> "}" */ /* NOTE : not a permanant definition */
     } type;
-} Function; /* TODO implement */
+} Function; 
 
 
 /* TODO document
