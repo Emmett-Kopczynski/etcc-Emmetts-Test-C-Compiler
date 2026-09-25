@@ -1,18 +1,10 @@
-/* codegen_utils.c : TODO document
+/* codegen_utils.c : the implemtations of all
+ * the utility function for the codgen module of the 
+ * compiler and the Assembly_AST
  *
  * To Do :
  *
- *      To Document :
- *          - codegen_utils.c
- *
- *      To Implement :
- *
- *      To Test :
- *          - gen_program
- *          - gen_function
- *          - gen_instructions
- *          - gen_operand
- *          - free_assembly_ast
+ * Known Bugs :
  *
  */
 
@@ -46,7 +38,7 @@ Assembly_AST *gen_program(AST *ast){
 error:
     free_assembly_ast(assembly_ast);
     return NULL;
-} /* TODO test */
+}
 
 
 Assembly_AST *gen_function(AST *ast){
@@ -73,7 +65,7 @@ Assembly_AST *gen_function(AST *ast){
 error:
     free_assembly_ast(assembly_ast);
     return NULL;
-} /* TODO test */ 
+}
 
 
 Assembly_AST **gen_instructions(AST *ast){
@@ -105,7 +97,7 @@ error:
     free_assembly_ast(assembly_ast[0]);
     free_assembly_ast(assembly_ast[1]);
     return NULL; 
-} /* TODO test */
+}
 
 
 Assembly_AST *gen_operand(AST *ast){
@@ -127,7 +119,7 @@ Assembly_AST *gen_operand(AST *ast){
 error:
     free_assembly_ast(assembly_ast);
     return NULL;
-} /* TODO test */
+}
 
 
 int free_assembly_ast(Assembly_AST *assembly_ast){
@@ -170,5 +162,5 @@ int free_assembly_ast(Assembly_AST *assembly_ast){
             break; 
     }
     return 0;
-} /* TODO test */
+}
 

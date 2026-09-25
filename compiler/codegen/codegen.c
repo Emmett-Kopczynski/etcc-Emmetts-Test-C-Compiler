@@ -1,12 +1,9 @@
-/* codegen.c : TODO document
+/* codegen.c : the codegen module (AKA assembly generation) of
+ * the compiler
  *
  * To Do :
  *
- *      - To Document :
- *          - codegen.c
- *
- *      - To Implement :
- *          - codegen_module
+ * Known Bugs :
  *
  */
 
@@ -30,4 +27,4 @@ int codegen_module(AST *ast, Assembly_AST **ass_ast, FlagLookupTable flagtable){
 error:
     fprintf(stderr, "Something Went Seriously Wrong With Codegen\n");
     return 1;
-} /* TODO implement */
+} 

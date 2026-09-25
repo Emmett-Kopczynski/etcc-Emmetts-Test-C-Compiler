@@ -1,19 +1,13 @@
 #ifndef ASSEMBLY_AST_H_
 #define ASSEMBLY_AST_H_
-/* assembly_ast.h : TODO document 
+/* assembly_ast.h : contains the definition
+ * of the Assembly_AST and all it's node types
  *
  * To Do :
  *
  *      To Document :
  *          - assembly_ast.h
  *          - A_ASTag
- *          - Assembly_AST
- *          - A_Program
- *          - A_Function
- *          - A_Instruction
- *          - A_Expression
- *
- *      To Implement :
  *          - Assembly_AST
  *          - A_Program
  *          - A_Function
