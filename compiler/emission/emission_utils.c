@@ -5,13 +5,8 @@
  *      To Document :
  *          - emmision_utils.c
  *
- *      To Implement :
- *      
- *      To Test :
- *          - emit_program
- *          - emit_function
- *          - emit_instruction
- *          
+ * Known Bugs :
+ *
  */
 
 /* c inclusions */
@@ -35,7 +30,7 @@ int emit_program(FILE *assembly_source, Assembly_AST *ass_ast){
 error:
     fprintf(stderr, "ERROR EMITING PROGRAM\n");
     return 1;
-} /* TODO test */
+} 
 
 
 int emit_function(FILE *assembly_source, Assembly_AST *ass_ast){
@@ -55,7 +50,7 @@ int emit_function(FILE *assembly_source, Assembly_AST *ass_ast){
 error:
     fprintf(stderr, "ERROR EMITING FUNCTION\n");
     return 1;
-} /* TODO test */
+}
 
 
 int emit_instruction(FILE *assembly_source, Assembly_AST *ass_ast){
@@ -80,7 +75,7 @@ int emit_instruction(FILE *assembly_source, Assembly_AST *ass_ast){
 error:
     fprintf(stderr, "ERROR EMITING INSTRUCTION\n");
     return 1;
-} /* TODO test */
+}
 
 
 
