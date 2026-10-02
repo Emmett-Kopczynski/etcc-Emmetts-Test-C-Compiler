@@ -1,9 +1,7 @@
-/* emmision_utils.c : TODO document
+/* emmision_utils.c : the implementation of all the functions 
+ * defined in emmision_utils.h
  *
  *  To Do :
- *
- *      To Document :
- *          - emmision_utils.c
  *
  * Known Bugs :
  *
