@@ -61,18 +61,30 @@ Assembly_AST *gen_function(AST *ast);
  *      - ast : type AST * : the AST from the parser at a statement node
  *
  * Returns : 
- *      - an instruction node for the Assembly AST
+ *      - an instruction node for the Assembly_AST
  *
  */
 Assembly_AST **gen_instructions(AST *ast);
 
-/* TODO document 
+/* gen_operand : generates an Assembly_AST node that represents an operand
+ *
+ * Arguments :
+ *      - ast : type AST * : an Expression AST node to be converted into an Assembly_AST operand node
+ *
+ * Returns :
+ *      - an operand node for the Assembly_AST
  *
  */
 Assembly_AST *gen_operand(AST *ast);
 
 
-/* TODO document 
+/* free_assembly_ast : frees the given assembly AST
+ *
+ * Arguments :
+ *      - assembly_ast : type Assembly_AST * : the Assembly_AST we are going to free
+ *
+ * Returns :
+ *      - an integer, 0 if no errors
  *
  */
 int free_assembly_ast(Assembly_AST *assembly_ast);

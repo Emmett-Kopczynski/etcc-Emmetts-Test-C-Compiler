@@ -4,15 +4,13 @@
  * of the Assembly_AST and all it's node types
  *
  * To Do :
- *
  *      To Document :
- *          - assembly_ast.h
- *          - A_ASTag
- *          - Assembly_AST
  *          - A_Program
  *          - A_Function
  *          - A_Instruction
  *          - A_Expression
+ *
+ * Known Bugs :
  *
  */
 
@@ -28,18 +26,23 @@ typedef struct a_instruction A_Instruction;
 typedef struct a_operand A_Operand;
 
 
-/* TODO document 
+/* A_ASTag : the tag for the
+ * Assembly_AST that represents the node type
  *
  */
 typedef enum {
-    A_PROGRAM, /* TODO document */
-    A_FUNCTION, /* TODO document */
-    A_INSTRUCTION, /* TODO document */
-    A_OPERAND /* TODO document */
+    A_PROGRAM,  /* represents a program node for the Assembly_AST */
+    A_FUNCTION, /* represents a function node for the Assembly_AST */
+    A_INSTRUCTION, /* represents an instruction node for the Assembly_AST */
+    A_OPERAND /* represents an operand node type for the Assembly_AST */
 } A_ASTag; 
 
 
-/* TODO document
+/* Assembly_AST : an Assembly Abstract Syntax Tree
+ *
+ * Variables :
+ *      - node_type : type A_ASTag : signifies the node_type of the Assembly_AST
+ *      - node : type union : leads to the node information
  *
  */
 typedef struct assembly_ast{
@@ -59,8 +62,10 @@ typedef struct assembly_ast{
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/* TODO document
+/* A_Program : a program node for the Assembly_AST
  *
+ * Variables :
+ *      - type : type union : the relevant info given the Program
  */
 typedef struct a_program {
     union{
@@ -69,7 +74,10 @@ typedef struct a_program {
 } A_Program;
 
 
-/* TODO document
+/* A_Function : a function node for the Assembly_AST
+ *
+ * Variables :
+ *      - type : type union : the relevant info given the Function
  *
  */
 typedef struct a_function {
@@ -78,7 +86,11 @@ typedef struct a_function {
     } type;
 } A_Function;
 
-/* TODO document 
+/* A_Instruction : an instruction node for the Assembly_AST
+ *
+ * Variables :
+ *      - Instruct_Type : type enum : signifies the instruction type
+ *      - type : type union : the relevant info given the instruction type
  *
  */
 typedef struct a_instruction {
@@ -93,8 +105,10 @@ typedef struct a_instruction {
 } A_Instruction;
 
 
-/* TODO document 
+/* A_Operand : an operand node for the Assembly_AST
  *
+ * Variables :
+ *      - type : type union : the relevant info given the operand
  */
 typedef struct a_operand{
     union{
