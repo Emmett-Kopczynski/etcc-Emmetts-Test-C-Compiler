@@ -6,11 +6,7 @@
  *
  * To Do : 
  *
- *      To Document : TODO
- *          - parse_program
- *          - parse_function
- *          - parse_statement
- *          - parse_expression
+ * Known Bugs :
  *
  */
 
@@ -47,25 +43,55 @@ void ast_printer(AST *ast);
 boolean expect(Token *expected, TokenQueue *tokens);
 
 
-/* TODO document
+/* parse_program : generates a Program node for an AST given a TokenQueue, uses recursive decent parsing to 
+ * generate all the nodes below it in the tree as well
+ *
+ * Arguments :
+ *      - tokens : type TokenQueue * : the Queue of Tokens we are parsing to make the tree
+ *
+ * Returns :
+ *      - a program node for an Abstract Syntax Tree and all the nodes below it, returns NULL if there
+ *      was an error
  *
  */
 AST *parse_program(TokenQueue *tokens);
 
 
-/* TODO document 
+/* parse_function : generates a Function node for an AST given a TokenQueue, uses recursive decent parsing 
+ * to generate all the nodes below it in the tree as well
+ *
+ * Arguments : 
+ *      - tokens : type TokenQueue *  : the Queue of Tokens we are parsing to make the tree
+ *
+ * Returns : 
+ *      - a function node for an Abstract Syntax Tree and all the nodes below it, returns NULL if there
+ *      was an error
  *
  */
 AST *parse_function(TokenQueue *tokens);
 
 
-/* TODO document
+/* parse_statement : generates a Statement node for an AST given a TokenQueue, uses recursive decent parsing
+ * to genrate all the nodes below it in the tree as well
+ *
+ * Arguments :
+ *      - tokens : type TokenQueue * : the Queue of Tokens we are parsing to make the tree
+ *
+ * Returns : 
+ *      - a statement node for an Abstract Syntax Tree and all the nodes below it, returns NULL if there was an 
+ *      error
  *
  */
 AST *parse_statement(TokenQueue *tokens);
 
 
-/* TODO document
+/* parse_expression : generates an Expression node for an AST given a TokenQueue
+ *
+ * Aruments :
+ *      - token : type TokenQueue * : the Queue of TOkens we are parsing to make the tree
+ *
+ * Returns :
+ *      - an Expression node for an AST, returns NULL if there was an error 
  *
  */
 AST *parse_expression(TokenQueue *tokens);

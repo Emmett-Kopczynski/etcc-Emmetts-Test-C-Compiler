@@ -31,6 +31,9 @@ int compile(char *sourcepath, FlagLookupTable flags){
     AST *ast = NULL; /* declares the abstract sytnax tree */
     Assembly_AST *ass_ast = NULL; /* declares the assembly abstract syntax tree */
 
+
+
+
     /* runs stage 1 of the compiler, the lexer, filling up the tokenqueue */
     err = lexer_module(source, tqueue, flags);
     if(err != 0){
@@ -40,10 +43,13 @@ int compile(char *sourcepath, FlagLookupTable flags){
     
     /* checks if the --lex flag was used, if so, stop now */
     if(flags.contains(&flags, LEX)){
+        free(sourcepath_cpy);
         clean_token_queue(tqueue);
         fclose(source);
         return 0;
     }
+
+
 
 
     /* runs stage 2 of the compiler, the parser building the abstract syntax tree */
@@ -53,7 +59,18 @@ int compile(char *sourcepath, FlagLookupTable flags){
         goto error;
     }
     clean_token_queue(tqueue);  /* cleans up the TokenQueue at the end of stage 2 */
-      
+    tqueue = NULL;  
+
+    /* checks if the --parse flag was used, if so, stop now */
+    if(flags.contains(&flags, PARSE)){
+        free(sourcepath_cpy);
+        free_ast(ast);
+        fclose(source);
+        return 0;
+    }
+
+
+
 
     /* runs stage 3 of the compiler, generating the assembly abstract syntax tree from the abstract syntax tree */
     err = codegen_module(ast, &ass_ast, flags);
@@ -61,7 +78,17 @@ int compile(char *sourcepath, FlagLookupTable flags){
         fprintf(stderr, "CODEGEN ERROR\n");
         goto error;
     }
-    
+
+    /* checks if the --codegen flag was used, if so, stop now */
+    if(flags.contains(&flags, CODEGEN)){
+        free(sourcepath_cpy);
+        free_ast(ast);
+        free_assembly_ast(ass_ast);
+        fclose(source);
+        return 0;
+    }
+
+
 
     /* runs stage four, emitting the assembly abstract sytnax tree to a file, generating assembly code */
     strcpy(sourcepath_cpy, sourcepath);

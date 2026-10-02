@@ -5,16 +5,8 @@
  * of the compiler
  *
  * To Do :
- *      
- *      To Document :
- *          - ASTag
- *          - AST
- *          - Program
- *          - Function
- *          - Statement
- *          - Expression
- *      
- *      To Implement :
+ *
+ * Known Bugs :      
  *
  */
 
@@ -34,14 +26,18 @@ typedef struct expression Expression;
  *
  */
 typedef enum {
-    PROGRAM, /* TODO document */
-    FUNCTION, /* TODO document */
-    STATEMENT, /* TODO document */
-    EXP /* TODO document */
+    PROGRAM, /* signifies a Program node for the AST */
+    FUNCTION, /* signifies a Function node for the AST */
+    STATEMENT, /* signifies a Statement node for the AST */
+    EXP /* signifies an Expression node for the AST */
 } ASTag;
 
 
-/* TODO document 
+/* AST : an Abstract Syntax Tree used to represent a C program
+ *
+ * Variables :
+ *      - node_type : type ASTag : signifies the type of node it is
+ *      - node : type union : stores different node info based on the node type
  *
  */
 typedef struct ast {
@@ -62,7 +58,10 @@ typedef struct ast {
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/* TODO document
+/* Program : a Program node for an Abstract  Syntax Tree (AST) for the C programming language
+ *
+ * Variables :
+ *      - type : type union : the node information for the Program node
  *
  */
 typedef struct program{
@@ -72,7 +71,10 @@ typedef struct program{
 } Program; 
 
 
-/* TODO document
+/* Function : a Function node for an Abstract Syntax Tree (AST) for the C programming language
+ *
+ * Variables :
+ *      - type : type union : the node information for the Function node
  *
  */
 typedef struct function{
@@ -82,7 +84,10 @@ typedef struct function{
 } Function; 
 
 
-/* TODO document
+/* Statement : a Statement ndoe for an Abstract Syntax Tree (AST) for the C programming language
+ *
+ * Variables :
+ *      - type : type union : the node information for the Program node
  *
  */
 typedef struct statement{
@@ -92,7 +97,10 @@ typedef struct statement{
 } Statement;
 
 
-/* TODO document
+/* Expression : an Expression node for an Abstract Syntax Tree (AST) for the C programming language
+ *
+ * Variables :
+ *      - type : type union : the node information fo the Expression node
  *
  */
 typedef struct expression{

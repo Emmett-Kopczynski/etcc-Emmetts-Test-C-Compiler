@@ -16,6 +16,7 @@
 /* inclusions from c standard */
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 /* homemade inclusions */
 #include "../util/boolean.h"
@@ -69,11 +70,10 @@ int main(int argc, char *argv[]){
     }
     
     delete_file(source);
+    source[strlen(source) - 1] = 's';
     
-    
-    if(flagtable.contains(&flagtable, S) == False){
+    if(flagtable.contains(&flagtable, S) == False && access(source, F_OK) == 0){
         /* link and assemble */
-        source[strlen(source) - 1] = 's';
         assemblink(source, flagtable);
         
         delete_file(source);
