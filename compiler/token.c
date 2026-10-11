@@ -1,7 +1,7 @@
 /* token.c : the c file for the 3 token data structures, Token, TokenNode, and TokenQueue.
  * All three of these must be used carefully as a lot of the memory used by them must be given back
  *  
- *  To Do :
+ * To Do :
  *      
  * Known Bugs :
  *

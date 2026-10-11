@@ -6,10 +6,7 @@
  *
  * To Do : 
  *      
- *      To Document :
- *          - gen_instructions
- *          - gen_operand
- *          - free_assembly_ast
+ * Known Bugs :
  *
  */
 

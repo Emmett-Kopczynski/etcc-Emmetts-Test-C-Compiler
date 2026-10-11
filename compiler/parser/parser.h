@@ -3,8 +3,10 @@
 /* parser.h : the header file that defines the parser_module function used in parser.c and 
  * provides documentation for it 
  *
- *  To Do :
+ * To Do :
  * 
+ * Known Bugs :
+ *
  */
 
 /* c inclusions */

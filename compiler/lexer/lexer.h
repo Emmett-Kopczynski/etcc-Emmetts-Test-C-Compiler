@@ -3,6 +3,8 @@
 /* lexer.h : the header file for the lexer module of the compiler
  *
  * To Do :
+ * 
+ * Known Bugs :
  *
  */
 

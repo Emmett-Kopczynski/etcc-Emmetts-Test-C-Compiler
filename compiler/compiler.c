@@ -1,7 +1,6 @@
 /* compiler.c : the .c file that runs the compilation steps for the main compiler
  *
  * To Do : 
- *      - Implement all flags  TODO
  *      
  * Known Bugs :
  *

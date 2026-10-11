@@ -4,11 +4,6 @@
  * of the Assembly_AST and all it's node types
  *
  * To Do :
- *      To Document :
- *          - A_Program
- *          - A_Function
- *          - A_Instruction
- *          - A_Expression
  *
  * Known Bugs :
  *

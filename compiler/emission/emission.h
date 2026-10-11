@@ -3,10 +3,9 @@
 /* emission.h : defines the main method used in the
  * emission module of the compiler
  *  
- *  To Do :
- *      
- *      To Document :
- *          - emission_module
+ * To Do :
+ *
+ * Known Bugs :
  *
  */
 
