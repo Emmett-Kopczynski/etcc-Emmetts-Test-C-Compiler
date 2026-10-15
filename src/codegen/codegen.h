@@ -12,7 +12,7 @@
 /* homemade inclusions */
 #include "assembly_ast.h"
 #include "../parser/ast.h"
-#include "../../driver/flag_table.h"
+#include "../driver/flag_table.h"
 
 
 /* codegen_module : the codegen module of the compoiler

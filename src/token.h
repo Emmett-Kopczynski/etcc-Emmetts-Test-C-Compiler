@@ -12,7 +12,7 @@
 
 
 /* homemeade inclusions */
-#include "../util/boolean.h"
+#include "util/boolean.h"
 
 
 /* TokenType : the different types of token that the Token data 

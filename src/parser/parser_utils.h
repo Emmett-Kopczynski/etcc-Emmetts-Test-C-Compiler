@@ -16,7 +16,7 @@
 
 /* homemade inclusions */
 #include "ast.h"
-#include "../../util/boolean.h"
+#include "../util/boolean.h"
 #include "../token.h"
 
 /* ast_printer : prints the given AST (Abstract Syntax Tree) to stdout

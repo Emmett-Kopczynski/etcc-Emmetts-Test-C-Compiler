@@ -4,12 +4,12 @@ OUT = etcc
 
 #source Groups
 SUTIL = NOTHING YET # util sources
-SDRIVER = driver/driver_utils.c  driver/flag_table.c  driver/main.c # driver sources
-SCOMP = compiler/compiler.c compiler/token.c  # general compiler sources
-SLEX = compiler/lexer/lexer.c  compiler/lexer/lexer_utils.c  # lexer sources
-SPAR = compiler/parser/parser.c compiler/parser/parser_utils.c # parser sources
-SGEN = compiler/codegen/codegen.c compiler/codegen/codegen_utils.c #codegen sources
-SEMI = compiler/emission/emission.c compiler/emission/emission_utils.c #emission sources
+SDRIVER = src/driver/driver_utils.c  src/driver/flag_table.c  src/driver/main.c # driver sources
+SCOMP = src/compiler.c src/token.c  # general compiler sources
+SLEX = src/lexer/lexer.c  src/lexer/lexer_utils.c  # lexer sources
+SPAR = src/parser/parser.c src/parser/parser_utils.c # parser sources
+SGEN = src/codegen/codegen.c src/codegen/codegen_utils.c #codegen sources
+SEMI = src/emission/emission.c src/emission/emission_utils.c #emission sources
 
 
 #emmett compilers

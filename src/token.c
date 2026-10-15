@@ -15,7 +15,7 @@
 
 /* homemade inclusions */
 #include "token.h"
-#include "../util/boolean.h"
+#include "util/boolean.h"
 
 
 

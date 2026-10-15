@@ -15,7 +15,7 @@
 
 /* homemade inclusions */
 #include "../token.h"
-#include "../../util/boolean.h"
+#include "../util/boolean.h"
 
 
 /* is_keyword : returns True if the given string is a keyword, otherwise False

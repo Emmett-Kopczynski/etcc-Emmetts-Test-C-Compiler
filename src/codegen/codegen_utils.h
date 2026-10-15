@@ -16,7 +16,7 @@
 /* homemade inclusions */
 #include "assembly_ast.h"
 #include "../parser/ast.h"
-#include "../../util/boolean.h"
+#include "../util/boolean.h"
 
 
 /* symbolic constants */

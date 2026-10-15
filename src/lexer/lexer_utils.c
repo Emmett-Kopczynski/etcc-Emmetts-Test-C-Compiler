@@ -17,7 +17,7 @@
 /* homemade inclusions */
 #include "lexer_utils.h"
 #include "../token.h"
-#include "../../util/boolean.h"
+#include "../util/boolean.h"
 
 
 boolean is_keyword(char *string){

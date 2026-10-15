@@ -14,7 +14,7 @@
 
 /* homemade inclusions */
 #include "../token.h"
-#include "../../driver/flag_table.h"
+#include "../driver/flag_table.h"
 
 
 /* lexer_module : turns the given preprocessed c file (*.i) into a queue of tokens

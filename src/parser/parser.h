@@ -13,7 +13,7 @@
 
 
 /* homemade incluxions */
-#include "../../driver/flag_table.h"
+#include "../driver/flag_table.h"
 #include "parser_utils.h"
 
 

@@ -14,7 +14,7 @@
 
 /* homemade inclusions */
 #include "../codegen/assembly_ast.h"
-#include "../../driver/flag_table.h"
+#include "../driver/flag_table.h"
 
 
 /* emission_module : runs the emission module of the compiler, emiting a working

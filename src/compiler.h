@@ -13,7 +13,7 @@
 #include <stdio.h>
 
 /* homemade inclusions */
-#include "../driver/flag_table.h"
+#include "driver/flag_table.h"
 
 
 /* compile : compiles the given preprocessed c file (*.i), this process might be modified

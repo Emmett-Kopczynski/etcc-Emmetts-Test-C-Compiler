@@ -15,7 +15,7 @@
 #include "compiler.h"
 #include "lexer/lexer.h"
 #include "token.h"
-#include "../driver/flag_table.h"
+#include "driver/flag_table.h"
 #include "parser/parser.h"    
 #include "codegen/codegen.h"
 #include "codegen/codegen_utils.h"
